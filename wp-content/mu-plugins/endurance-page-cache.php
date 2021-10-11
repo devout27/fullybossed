@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Endurance Page Cache
  * Description: This cache plugin is primarily for cache purging of the additional layers of cache that may be available on your hosting account.
- * Version: 2.1.1
+ * Version: 2.1.2
  * Author: Mike Hansen
  * Author URI: https://www.mikehansen.me/
  * License: GPLv2 or later
@@ -27,7 +27,7 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-define( 'EPC_VERSION', '2.1.1' );
+define( 'EPC_VERSION', '2.1.2' );
 
 if ( ! class_exists( 'Endurance_Page_Cache' ) ) {
 
@@ -173,7 +173,9 @@ if ( ! class_exists( 'Endurance_Page_Cache' ) ) {
 			$this->cloudflare_enabled      = (bool) $cloudflare_state;
 			$this->cloudflare_tier         = ( is_numeric( $cloudflare_state ) && $cloudflare_state ) ? 'basic' : $cloudflare_state;
 			$this->udev_api_services['cf'] = $this->cloudflare_tier;
-			$this->file_based_enabled      = (bool) get_option( 'endurance_file_enabled', false === strpos( dirname( __FILE__ ), 'public_html' ) );
+
+			$path                          = defined( 'ABSPATH' ) ? ABSPATH : dirname( __FILE__ );
+			$this->file_based_enabled      = (bool) get_option( 'endurance_file_enabled', false === strpos( $path, 'public_html' ) );
 
 			array_push( $this->cache_exempt, rest_get_url_prefix() );
 

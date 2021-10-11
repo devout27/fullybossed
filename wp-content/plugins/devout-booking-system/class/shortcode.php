@@ -25,7 +25,7 @@
 		$html='<a href="'.$url.'"><button>Book Now</button></a>';
 		return $html;
 	}
-	 #[podcasts limit=4]
+	 //#[podcasts limit=4]
 	add_shortcode('podcasts', 'podcasts');
     function podcasts($atts){
 
@@ -66,7 +66,7 @@
 		return $html;
 	}
 
-	#[pillar limit=20]
+	//#[pillar limit=20]
 	add_shortcode('pillar', 'pillar');
 	function pillar($atts){
 		$limit=$atts['limit'];
@@ -123,7 +123,7 @@
 		return $html;
 
 	}
-	#[podcast-pillar]
+	//#[podcast-pillar]
 	add_shortcode('podcast-pillar', 'podcast_pillar');
 	function podcast_pillar($atts){
 		$limit=$atts['limit'];

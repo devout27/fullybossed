@@ -174,7 +174,7 @@
 </div>
 
 <?php wp_footer(); ?>
-<script src="<?php echo home_url().'/wp-content/plugins/'.PLUGIN_DIR_NAME.'/template/assets/js/validation.js'?>"></script>
+<script src="<?php //echo home_url().'/wp-content/plugins/'.PLUGIN_DIR_NAME.'/template/assets/js/validation.js'?>"></script>
 </body>
 <script>
 		$(".icon").click(function(){

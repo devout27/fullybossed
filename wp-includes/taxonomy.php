@@ -1350,9 +1350,9 @@ function delete_term_meta( $term_id, $meta_key, $meta_value = '' ) {
  *               False for an invalid `$term_id` (non-numeric, zero, or negative value).
  *               An empty string if a valid but non-existing term ID is passed.
  */
-function get_term_meta( $term_id, $key = '', $single = false ) {
-	return get_metadata( 'term', $term_id, $key, $single );
-}
+// function get_term_meta( $term_id, $key = '', $single = false ) {
+// 	return get_metadata( 'term', $term_id, $key, $single );
+// }
 
 /**
  * Updates term metadata.

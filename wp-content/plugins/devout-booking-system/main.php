@@ -114,7 +114,7 @@ Author URI: https://devouttechconsultants.com/
 		$site_url = get_site_url();
         $session_dates_arr=array();
 		global $post,$wp_scripts, $wp_styles;
-    	$page_slug = $post->post_name;
+    	// $page_slug = $post->post_name;
 		$plugin_dir_url = plugin_dir_url(__DIR__);
 		$img_sorting_url = $plugin_dir_url.'/devout-booking-system/sorting.png';
 		wp_enqueue_script( 'jquery-ui-sortable');
@@ -122,9 +122,9 @@ Author URI: https://devouttechconsultants.com/
 		// create my own version codes
 		$my_js_ver = date("ymd-Gis", filemtime( plugin_dir_path( __FILE__ ) . 'template/assets/js/fullybossed-frontend.js'));
 		$my_css_ver = date("ymd-Gis", filemtime( plugin_dir_path( __FILE__ ) . 'template/assets/css/fullybossed-frontend.css'));
-		if($page_slug == 'booking-speaking-overview') {
-			wp_enqueue_script('fb-calendar-min-js', plugin_dir_url(__FILE__).'template/assets/js/calendar.min.js', array(),'1.3.6', true );
-		}
+		// if($page_slug == 'booking-speaking-overview') {
+		// 	wp_enqueue_script('fb-calendar-min-js', plugin_dir_url(__FILE__).'template/assets/js/calendar.min.js', array(),'1.3.6', true );
+		// }
 		
 		wp_enqueue_script('jquery-timepicker-js', plugin_dir_url(__FILE__).'/template/assets/js/jquery-timepicker.js', array(), '5.6.9' ,true);
 		wp_enqueue_script('fb-frontend-js', plugin_dir_url(__FILE__).'/template/assets/js/fullybossed-frontend.js?wsx=8.6.9', array(), $my_js_ver );
@@ -207,8 +207,8 @@ Author URI: https://devouttechconsultants.com/
 		}
 		$ajax_speaking_object = array( 
 				'ajaxurl' => admin_url( 'admin-ajax.php'),
-				'session_dates_arr_speaking_online' => $session_dates_arr_speaking_online,
-				'session_dates_arr_speaking_inpersonal' => $session_dates_arr_speaking_inpersonal,
+				// 'session_dates_arr_speaking_online' => $session_dates_arr_speaking_online,
+				// 'session_dates_arr_speaking_inpersonal' => $session_dates_arr_speaking_inpersonal,
 				'crdate'=> date("Y-m-d"),
 				'img_sorting_url'=>$img_sorting_url,
 				'site_url' => $site_url,

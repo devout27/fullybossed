@@ -76,7 +76,7 @@
 	global $wp_query;
 	$admin_logged_in = false;
 	$post = $wp_query->get_queried_object();
-  	$pagename = $post->post_name;
+  	// $pagename = $post->post_name;
 	if( current_user_can('administrator') ) {
 		$admin_logged_in = true;
 	}
@@ -88,7 +88,7 @@
 		<div class="col-8 col-md-4 col-lg-4 col-xl-4">
 			<div class="site-logo">
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
-					<img src="/wp-content/uploads/2021/04/fully-bossed-logo-caudex-regular1.png" alt="Fully Bossed">
+					<img src="<?php echo get_stylesheet_directory_uri(); ?>/wp-content/uploads/2021/04/fully-bossed-logo-caudex-regular1.png" alt="Fully Bossed">
 				</a>
 			</div>
 		</div>
@@ -110,6 +110,6 @@
 
 	<div>
 
-		<img src="<?php echo home_url().'/wp-content/plugins/'.PLUGIN_DIR_NAME.'/loader.gif' ?>" width="80">
+		<img src="<?php //echo home_url().'/wp-content/plugins/'.PLUGIN_DIR_NAME.'/loader.gif' ?>" width="80">
 	</div>
 </div>
