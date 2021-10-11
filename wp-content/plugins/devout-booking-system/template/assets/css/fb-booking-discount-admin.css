@@ -1,0 +1,18 @@
+/**
+ * All of the CSS for your admin-specific functionality should be
+ * included in this file.
+ */
+ input.fb_bd_hours_input {
+    width: 40%;
+}
+
+input.fb_bd_discount_input {
+    width: 30%;
+}
+img.sorting_images {
+    width: 25px;
+    height: auto;
+}
+button#add_fb_bd_remove, button#add_fb_bd_row, button#save_fb_bd_row:focus {
+    box-shadow: unset;
+}

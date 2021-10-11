@@ -1,0 +1,87 @@
+.comingsoon {
+    background-color: #f6e7e5;
+    padding-bottom: 47px;
+}
+.short-title h4 {
+    font-size: 18px;
+    text-align: center;
+}
+.title {
+    padding: 0 0 0 110px;
+}
+.title h2 {
+    font-size: 40px;
+    letter-spacing: 3px;
+}
+.text p {
+    text-align: center;
+}
+.inner-sec {
+    padding: 100px 0px 0 0;
+}
+.btn.btn1 {
+    background-color: #666;
+    color: #fff;
+}
+.short-title {
+    margin-bottom: 20px;
+}
+.title {
+    padding: 0 0 0 110px;
+    margin-bottom: 20px;
+}
+.text {
+    margin-bottom: 30px;
+}
+.form-group.f-subscribe input {
+    width: 70%;
+    height: 40px;
+    border: 1px solid #e1e1e1;
+    box-sizing: border-box;
+    margin: 0;
+    outline: 0;
+    line-height: normal;
+    padding: 0 20px;
+    border-radius: 0px;
+    text-align: center;
+}
+.details-sec button:hover {
+    color: #fff !important;
+}
+.details-sec button:focus {
+    outline: none;
+}
+.details-sec {
+    text-align: center;
+}
+.details-sec button {
+    border: none !important;
+    padding: 10px 50px 10px 50px;
+    font-size: 18px;
+    background-color: #666;
+    color: #fff;
+}
+.coming-s-images img {
+    width: 100%;
+}
+
+.form-group.f-subscribe input {
+    background: #fff;
+}
+
+input.wpcf7-form-control.wpcf7-submit {
+    background: #666;
+    border: none !important;
+    padding: 10px 50px 10px 50px;
+    font-size: 18px;
+    background-color: #666;
+    color: #fff;
+    font-weight: 700;
+}
+.screen-reader-response {
+    color: green;
+    font-size: 17px;
+}
+.create-group ul li {
+    list-style: none;
+}

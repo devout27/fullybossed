@@ -1,0 +1,73 @@
+.fb-booking-sec .fb-booking-images-icon svg {
+	width: 85px;
+	height: 85px;
+}
+.fb-booking-icon {
+	margin: 0 0 30px 0;
+}
+.fb-booking-info h4 {
+	color: #000;
+	font-size: 25px;
+	font-weight: 600;
+	font-style: normal;
+	line-height: 35px;
+	font-family: "GoudyOS" !important;
+}
+.fb-booking-info-title {
+    margin: 0 0 0 15px 0;
+}
+.fb-booking-info-text{
+    font-size: 14px;
+    line-height: 25px;
+    font-family: "Gotham" !important;
+}.fullybossed-booking .fb-booking-sec a {
+    color: #000;
+}
+.hover-ani .mark-green {
+	padding: 0px;
+	background-color: transparent;
+	background-image: linear-gradient(#a8d08d 0%, #a8d08d 100%);
+	background-repeat: no-repeat;
+	background-size: 0% 100%;
+	background-position: 0px 0px;
+	transition: 0.3s;
+}
+.hover-ani:hover .fb-booking-images-icon .mark-green, .hover-ani:hover .mark-green {
+	background-size: 100% 100%;
+	transition: 0.3s;
+}
+.hover-ani .fb-booking-images-icon {
+    transition: 0.3s;
+}
+.hover-ani:hover .fb-booking-images-icon {
+	fill: #a8d08d !important;
+	color: #a8d08d !important;
+    transition: 0.3s;
+}
+.fb-booking-sec {
+	border: 1px solid;
+	padding: 30px 10px 20px 10px;
+}
+
+.fb-booking-tab-btns {
+	margin: 0 0 20px 0;
+}
+.fb-booking-tab-btns .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: #000 !important;
+    border-color: #dee2e6 #dee2e6 #fff;
+}
+.fb-booking-tab-btns .wp-person a:focus .gravatar, a:focus, a:focus .media-icon img {
+	color: #000!important;
+	box-shadow: none !important;
+	outline: 1px solid transparent;
+}
+.fb-booking-tab-btns .nav-link {
+	display: block;
+	padding: .5rem 2rem !important;
+}
+.fb-booking-tab-btns ul li a {
+    color: #000 !important;
+}
+.nav-item {
+	color: #000 !important;
+}

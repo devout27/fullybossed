@@ -1,0 +1,69 @@
+[15-Jul-2021 14:40:03 America/Boise] PHP Warning:  Use of undefined constant ABSPATH - assumed 'ABSPATH' (this will throw an Error in a future version of PHP) in /home2/fullybos/public_html/wp-includes/functions.php on line 8
+[15-Jul-2021 14:40:03 America/Boise] PHP Warning:  Use of undefined constant WPINC - assumed 'WPINC' (this will throw an Error in a future version of PHP) in /home2/fullybos/public_html/wp-includes/functions.php on line 8
+[15-Jul-2021 14:40:03 America/Boise] PHP Warning:  require(ABSPATHWPINC/option.php): failed to open stream: No such file or directory in /home2/fullybos/public_html/wp-includes/functions.php on line 8
+[15-Jul-2021 14:40:03 America/Boise] PHP Warning:  require(ABSPATHWPINC/option.php): failed to open stream: No such file or directory in /home2/fullybos/public_html/wp-includes/functions.php on line 8
+[15-Jul-2021 14:40:03 America/Boise] PHP Fatal error:  require(): Failed opening required 'ABSPATHWPINC/option.php' (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home2/fullybos/public_html/wp-includes/functions.php on line 8
+[30-Jul-2021 14:05:40 America/Boise] PHP Fatal error:  Uncaught Error: Class 'Walker' not found in /home2/fullybos/public_html/wp-includes/class-walker-nav-menu.php:17
+Stack trace:
+#0 {main}
+  thrown in /home2/fullybos/public_html/wp-includes/class-walker-nav-menu.php on line 17
+[31-Jul-2021 18:20:37 America/Boise] PHP Fatal error:  Uncaught Error: Call to undefined function _deprecated_file() in /home2/fullybos/public_html/wp-includes/locale.php:11
+Stack trace:
+#0 {main}
+  thrown in /home2/fullybos/public_html/wp-includes/locale.php on line 11
+[02-Aug-2021 00:26:02 America/Boise] PHP Fatal error:  Uncaught Error: Call to undefined function get_the_block_template_html() in /home2/fullybos/public_html/wp-includes/template-canvas.php:12
+Stack trace:
+#0 {main}
+  thrown in /home2/fullybos/public_html/wp-includes/template-canvas.php on line 12
+[07-Aug-2021 04:40:57 America/Boise] PHP Fatal error:  Uncaught Error: Call to undefined function get_the_block_template_html() in /home2/fullybos/public_html/wp-includes/template-canvas.php:12
+Stack trace:
+#0 {main}
+  thrown in /home2/fullybos/public_html/wp-includes/template-canvas.php on line 12
+[19-Aug-2021 02:07:28 America/Boise] PHP Fatal error:  Uncaught Error: Call to undefined function get_the_block_template_html() in /home2/fullybos/public_html/wp-includes/template-canvas.php:12
+Stack trace:
+#0 {main}
+  thrown in /home2/fullybos/public_html/wp-includes/template-canvas.php on line 12
+[20-Aug-2021 10:51:11 America/Boise] PHP Fatal error:  Uncaught Error: Call to undefined function get_the_block_template_html() in /home2/fullybos/public_html/wp-includes/template-canvas.php:12
+Stack trace:
+#0 {main}
+  thrown in /home2/fullybos/public_html/wp-includes/template-canvas.php on line 12
+[25-Aug-2021 21:03:21 America/Boise] PHP Fatal error:  Uncaught Error: Call to undefined function get_the_block_template_html() in /home2/fullybos/public_html/wp-includes/template-canvas.php:12
+Stack trace:
+#0 {main}
+  thrown in /home2/fullybos/public_html/wp-includes/template-canvas.php on line 12
+[27-Aug-2021 14:50:32 America/Boise] PHP Fatal error:  Uncaught Error: Call to undefined function get_the_block_template_html() in /home2/fullybos/public_html/wp-includes/template-canvas.php:12
+Stack trace:
+#0 {main}
+  thrown in /home2/fullybos/public_html/wp-includes/template-canvas.php on line 12
+[29-Aug-2021 00:51:32 America/Boise] PHP Fatal error:  Uncaught Error: Call to undefined function get_the_block_template_html() in /home2/fullybos/public_html/wp-includes/template-canvas.php:12
+Stack trace:
+#0 {main}
+  thrown in /home2/fullybos/public_html/wp-includes/template-canvas.php on line 12
+[01-Sep-2021 07:51:43 America/Boise] PHP Fatal error:  Uncaught Error: Call to undefined function get_the_block_template_html() in /home2/fullybos/public_html/wp-includes/template-canvas.php:12
+Stack trace:
+#0 {main}
+  thrown in /home2/fullybos/public_html/wp-includes/template-canvas.php on line 12
+[02-Sep-2021 03:33:49 America/Boise] PHP Fatal error:  Uncaught Error: Call to undefined function get_the_block_template_html() in /home2/fullybos/public_html/wp-includes/template-canvas.php:12
+Stack trace:
+#0 {main}
+  thrown in /home2/fullybos/public_html/wp-includes/template-canvas.php on line 12
+[02-Sep-2021 09:34:48 America/Boise] PHP Fatal error:  Uncaught Error: Call to undefined function get_the_block_template_html() in /home2/fullybos/public_html/wp-includes/template-canvas.php:12
+Stack trace:
+#0 {main}
+  thrown in /home2/fullybos/public_html/wp-includes/template-canvas.php on line 12
+[04-Sep-2021 04:57:46 America/Boise] PHP Fatal error:  Uncaught Error: Call to undefined function get_the_block_template_html() in /home2/fullybos/public_html/wp-includes/template-canvas.php:12
+Stack trace:
+#0 {main}
+  thrown in /home2/fullybos/public_html/wp-includes/template-canvas.php on line 12
+[05-Sep-2021 19:20:51 America/Boise] PHP Fatal error:  Uncaught Error: Call to undefined function get_the_block_template_html() in /home2/fullybos/public_html/wp-includes/template-canvas.php:12
+Stack trace:
+#0 {main}
+  thrown in /home2/fullybos/public_html/wp-includes/template-canvas.php on line 12
+[07-Oct-2021 00:55:26 America/Boise] PHP Fatal error:  Uncaught Error: Class 'Walker' not found in /home2/fullybos/public_html/wp-includes/class-walker-nav-menu.php:17
+Stack trace:
+#0 {main}
+  thrown in /home2/fullybos/public_html/wp-includes/class-walker-nav-menu.php on line 17
+[07-Oct-2021 03:50:50 America/Boise] PHP Fatal error:  Uncaught Error: Call to undefined function _deprecated_file() in /home2/fullybos/public_html/wp-includes/locale.php:11
+Stack trace:
+#0 {main}
+  thrown in /home2/fullybos/public_html/wp-includes/locale.php on line 11

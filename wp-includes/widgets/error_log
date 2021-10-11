@@ -1,0 +1,40 @@
+[05-Aug-2021 17:31:57 America/Boise] PHP Fatal error:  Uncaught Error: Class 'WP_Widget' not found in /home2/fullybos/public_html/wp-includes/widgets/class-wp-widget-block.php:17
+Stack trace:
+#0 {main}
+  thrown in /home2/fullybos/public_html/wp-includes/widgets/class-wp-widget-block.php on line 17
+[07-Aug-2021 04:46:08 America/Boise] PHP Fatal error:  Uncaught Error: Class 'WP_Widget' not found in /home2/fullybos/public_html/wp-includes/widgets/class-wp-widget-block.php:17
+Stack trace:
+#0 {main}
+  thrown in /home2/fullybos/public_html/wp-includes/widgets/class-wp-widget-block.php on line 17
+[19-Aug-2021 02:11:31 America/Boise] PHP Fatal error:  Uncaught Error: Class 'WP_Widget' not found in /home2/fullybos/public_html/wp-includes/widgets/class-wp-widget-block.php:17
+Stack trace:
+#0 {main}
+  thrown in /home2/fullybos/public_html/wp-includes/widgets/class-wp-widget-block.php on line 17
+[25-Aug-2021 21:08:06 America/Boise] PHP Fatal error:  Uncaught Error: Class 'WP_Widget' not found in /home2/fullybos/public_html/wp-includes/widgets/class-wp-widget-block.php:17
+Stack trace:
+#0 {main}
+  thrown in /home2/fullybos/public_html/wp-includes/widgets/class-wp-widget-block.php on line 17
+[27-Aug-2021 14:53:58 America/Boise] PHP Fatal error:  Uncaught Error: Class 'WP_Widget' not found in /home2/fullybos/public_html/wp-includes/widgets/class-wp-widget-block.php:17
+Stack trace:
+#0 {main}
+  thrown in /home2/fullybos/public_html/wp-includes/widgets/class-wp-widget-block.php on line 17
+[29-Aug-2021 00:51:43 America/Boise] PHP Fatal error:  Uncaught Error: Class 'WP_Widget' not found in /home2/fullybos/public_html/wp-includes/widgets/class-wp-widget-block.php:17
+Stack trace:
+#0 {main}
+  thrown in /home2/fullybos/public_html/wp-includes/widgets/class-wp-widget-block.php on line 17
+[02-Sep-2021 03:34:01 America/Boise] PHP Fatal error:  Uncaught Error: Class 'WP_Widget' not found in /home2/fullybos/public_html/wp-includes/widgets/class-wp-widget-block.php:17
+Stack trace:
+#0 {main}
+  thrown in /home2/fullybos/public_html/wp-includes/widgets/class-wp-widget-block.php on line 17
+[02-Sep-2021 09:35:33 America/Boise] PHP Fatal error:  Uncaught Error: Class 'WP_Widget' not found in /home2/fullybos/public_html/wp-includes/widgets/class-wp-widget-block.php:17
+Stack trace:
+#0 {main}
+  thrown in /home2/fullybos/public_html/wp-includes/widgets/class-wp-widget-block.php on line 17
+[04-Sep-2021 05:02:11 America/Boise] PHP Fatal error:  Uncaught Error: Class 'WP_Widget' not found in /home2/fullybos/public_html/wp-includes/widgets/class-wp-widget-block.php:17
+Stack trace:
+#0 {main}
+  thrown in /home2/fullybos/public_html/wp-includes/widgets/class-wp-widget-block.php on line 17
+[05-Sep-2021 19:28:09 America/Boise] PHP Fatal error:  Uncaught Error: Class 'WP_Widget' not found in /home2/fullybos/public_html/wp-includes/widgets/class-wp-widget-block.php:17
+Stack trace:
+#0 {main}
+  thrown in /home2/fullybos/public_html/wp-includes/widgets/class-wp-widget-block.php on line 17

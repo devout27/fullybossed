@@ -1,0 +1,77 @@
+/* BsMultiSelect v0.4.3-beta */
+ul.form-control{height:auto;min-height:calc(1.5em + .75rem + 2px);margin-bottom:0}ul.form-control input{color:#495057}ul.form-control.disabled{background-color:#e9ecef}ul.form-control .badge{padding-left:0;line-height:1.5em}ul.form-control .badge button.close{font-size:1.5em;line-height:.9em}ul.form-control .badge span.disabled{opacity:.65}ul.form-control.focus{color:#495057;background-color:#fff;border-color:#80bdff;outline:0;box-shadow:0 0 0 .2rem rgba(0,123,255,.25)}ul.form-control.form-control-sm{min-height:calc(1.5em + .5rem + 2px)}ul.form-control.form-control-sm input{font-size:.875rem}ul.form-control.form-control-lg{min-height:calc(1.5em + 1rem + 2px)}ul.form-control.form-control-lg input{font-size:1.25rem}.was-validated ul.form-control:valid,ul.form-control.is-valid{border-color:#28a745}.was-validated ul.form-control:valid.focus,ul.form-control.is-valid.focus{border-color:#28a745;box-shadow:0 0 0 .2rem rgba(40,167,69,.25)}.was-validated ul.form-control:invalid,ul.form-control.is-invalid{border-color:#dc3545}.was-validated ul.form-control:invalid.focus,ul.form-control.is-invalid.focus{border-color:#dc3545;box-shadow:0 0 0 .2rem rgba(220,53,69,.25)}ul.dropdown-menu li .custom-control-input.disabled~.custom-control-label{color:#6c757d}
+
+.dashboardcode-bsmultiselect .dropdown-menu {
+    position: absolute !important;
+    top: 100% !important;
+    left: 0px !important;
+    transform: translate(0,0) !important;
+    width: 100%;
+    max-height: 350px;
+    overflow-y: scroll;
+    min-width: 100% !important;
+    overflow-x: hidden;
+    z-index: 99999;
+}
+.dashboardcode-bsmultiselect .custom-control-label {
+    font-size: 13px !important;
+    margin: 0px !important;
+    color: #222;
+}
+.dashboardcode-bsmultiselect .custom-control.custom-checkbox {
+    display: flex;
+    align-items: center;
+    padding: 5px 5px 5px 25px;
+}
+.dashboardcode-bsmultiselect .dropdown-menu li {
+    margin-bottom: 2px;
+}
+.dashboardcode-bsmultiselect .form-control .badge {
+    position: relative;
+    background: #f3f3f3;
+    padding: 10px 30px 10px 10px !important;
+    font-size: 12px;
+    font-weight: 400;
+    margin: 0px 5px 5px 0px;
+    display: inline-block;
+    line-height: 12px !important;
+    border-radius: 2px !important;
+}
+.dashboardcode-bsmultiselect .form-control .badge .close {
+    background: transparent !important;
+    position: absolute;
+    top: 50%;
+    right: 0px;
+    transform: translate(0%,-50%);
+    padding: 0px !important;
+    height: 100% !important;
+    width: 20px !important;
+    font-size: 16px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: normal !important;
+}
+.dashboardcode-bsmultiselect .form-control .badge .close:hover {
+    background: rgba(0,0,0,0.05) !important;
+}
+.dashboardcode-bsmultiselect .form-control {
+    overflow: scroll;
+    overflow-x: hidden;
+    box-shadow: none !important;
+    overflow: auto;
+}
+.dashboardcode-bsmultiselect {
+    position: relative;
+}
+.custom-control-label::before, .custom-control-label::after {
+    top: 1px;
+}
+.table button, .table a.btn {
+    margin: 0px 2px 5px 0px;
+    padding: 3px 8px;
+    font-size: 12px;
+}
+.table td, .table th {
+    font-size: 14px;
+}

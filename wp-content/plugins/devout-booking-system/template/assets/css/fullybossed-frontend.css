@@ -1,0 +1,111 @@
+/* css code here */
+
+.availabel_selected span {
+    background: #a8d08d;
+    color: white;
+}
+.day.availabel_date span::after {
+    content: "";
+    position: absolute;
+    bottom: 7px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-bottom: 2px solid #a8d08d;
+    width: 10px;
+    height: 1px;
+}
+.day.availabel_date span {
+    position: relative;
+    display: inline-block;
+    font-size: 110%;
+}
+#price_details, #slot_details {
+    display: none;
+}
+
+div#booking-u-detials-loder-img {
+    position: absolute;
+    top: 20%;
+    left: 43%;
+    z-index: 99999;
+    display: none;
+}
+label#email-error {
+    margin-top: 8px;
+    margin-left: 0px;
+}
+.form-row.sub-slots {
+    margin-left: 20px;
+    display: inherit;
+    margin-top: 15px;
+}
+input#session_no, input#session_yes {
+    width: auto !important;
+}
+span.badge.badge-success.fb-available-badges, span.badge.badge-danger.fb-available-badges {
+    float: right;
+    margin-right: 47px;
+}
+#proceed_to_pay {
+    display: none;
+}
+.sub-slots .custom-checkbox span {
+    margin-right: 53px;
+}
+.sub_slots_list > li {
+    list-style: none;
+}
+ .p_sub_slots_list {
+    color: #333;
+    margin: 0;
+    padding: 0;
+ }
+ .week.start-on-monday .day:last-child {
+    color: orange !important;
+}
+.week.start-on-monday .day:nth-child(6), .week.start-on-monday .day:nth-child(7) {
+    color: #000 !important;
+}  
+.day.today span::after {  
+    border-bottom: 2px solid rgb(255, 217, 102) !important;  
+}  
+#fb-speaking-time-from, #fb-speaking-time-to {
+    width: 100% !important;
+    border-radius: 0px !important;
+    color: #000 !important;
+    font-size: 14px !important;
+    height: 35px !important;
+    padding: 5px 10px 5px 10px !important;
+    background: #f3f3f3 !important;
+    border: 2px solid #000 !important;
+}
+#slotData .badge-success {
+    color: #fff;
+    background-color: #a8d08d;
+}
+
+.week .day.highlight span {
+    color: #000 !important;
+}
+
+.week .day.selected span {
+    background: #a8d08d !important;
+    color: white;
+}
+
+@media (max-width: 1199.98px) { 
+
+    span.badge.badge-success.fb-available-badges, span.badge.badge-danger.fb-available-badges {
+        margin-right: 32px;
+    }
+}
+@media (max-width: 991.98px) { 
+
+    span.badge.badge-success.fb-available-badges, span.badge.badge-danger.fb-available-badges {
+        margin-right: 2px;
+    }
+}
+ul.ss-lists {
+    margin-left: 94px;
+    margin-top: -43px;
+}
