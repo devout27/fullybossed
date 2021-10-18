@@ -688,7 +688,7 @@ function redirect_canonical( $requested_url = null, $do_redirect = true ) {
 	$redirect_host_low = strtolower( $redirect['host'] );
 
 	// Ignore differences in host capitalization, as this can lead to infinite redirects.
-	// Only redirect no-www <=> yes-www.
+	// Only redirect 	no-www <=> yes-www.
 	if ( $original_host_low === $redirect_host_low
 		|| ( 'www.' . $original_host_low !== $redirect_host_low
 			&& 'www.' . $redirect_host_low !== $original_host_low )

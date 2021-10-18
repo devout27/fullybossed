@@ -88,7 +88,7 @@
 		<div class="col-8 col-md-4 col-lg-4 col-xl-4">
 			<div class="site-logo">
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
-					<img src="<?php echo get_stylesheet_directory_uri(); ?>/wp-content/uploads/2021/04/fully-bossed-logo-caudex-regular1.png" alt="Fully Bossed">
+					<img src="<?php echo get_template_directory_uri(); ?>/wp-content/uploads/2021/04/fully-bossed-logo-caudex-regular1.png" alt="Fully Bossed">
 				</a>
 			</div>
 		</div>

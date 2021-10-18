@@ -4,7 +4,7 @@
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  * @package WordPress
  * @subpackage FullyBossed
- * @since 1.0.0
+ * @since 1.0.0 
  */
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -13,8 +13,8 @@ function add_theme_scripts() {
 	global $wp_query;
 	wp_enqueue_style( 'plugin', get_template_directory_uri() . '/css/plugin-min.css?qaz=798', array(), '3.5.9', 'all');
 	wp_enqueue_style( 'style', get_template_directory_uri() . '/style.css?qaz=798', array(), '3.5.9', 'all');
-	wp_enqueue_script( 'plugin', get_template_directory_uri() . '/js/plugin-min.js', array ( 'jquery' ), 1.3, true);
-	wp_enqueue_script( 'custom', get_template_directory_uri() . '/js/custom.js?ver_qaz=456', array ( 'jquery' ), 'ver_qaz=456', true);	
+	wp_enqueue_script( 'plugin', get_template_directory_uri() . '/js/plugin-min.js', array( 'jquery' ), 1.3, true);
+	wp_enqueue_script( 'custom', get_template_directory_uri() . '/js/custom.js?ver_qaz=456', array( 'jquery' ), 'ver_qaz=456', true);	
 	$admin_logged_in = false;
 	$current_user_role='';
 	$post = $wp_query->get_queried_object();
@@ -191,7 +191,7 @@ function fb_tr(){
 function wpse_hide_cat_descr() { ?>
 
     <style type="text/css">
-       #edittag .term-description-wrap,.term-parent-wrap,.term-slug-wrap,.term-description-wrap{
+       .term-description-wrap,.term-parent-wrap,.term-slug-wrap,.term-description-wrap{
            display: none;
        }
     </style>
@@ -201,44 +201,119 @@ add_action( 'admin_head-term.php', 'wpse_hide_cat_descr' );
 add_action( 'admin_head-edit-tags.php', 'wpse_hide_cat_descr' );
 
 
-// Add Column in category in right side section
+
+// display custom column in post category
+
 function manage_my_category_columns($columns)
 {
  $columns['pillar'] = "<a href='' id='cat-id'>Pillar</a>";
-
  return $columns;
 }
 add_filter('manage_edit-category_columns','manage_my_category_columns');
 
+
 // Display category id in custom added column.
 
+add_filter( 'manage_category_custom_column', 'get_term_meta', 99, 3 );
 
-
-
-// function tutsplus_get_term_metas($column_name) { 
-// 	if($column_name == 'pillar'){
-//     $category = get_the_category();
-//     // var_dump($category);
-//     $term_id  = $category->term_id;
-//       get_term_meta( $term_id,'category_post_pillar');
-//     }
-//     return $column_name; 
-// }
-// add_filter( 'the_content', 'tutsplus_get_term_metas' );
-
-
-function manage_category_custom_fields($get_value){
-$term_args = array(
-    'taxonomy' => 'category',
-    );
-$terms = get_terms( $term_args );
-$term_ids = array();
-foreach( $terms as $term ) {
-    get_term_meta( $term->name, '_category_post_pillar', true );
-    if( $key == 'field_606ed9d613728' ) {
-        // push the ID into the array
-        $term_ids[] = $term->ID;
-    }
+function get_term_meta( $deprecated, $column_name, $term_id ){
+    if( $column_name !== 'pillar' ){
+		return $deprecated;
+		}    
+    $term_id = absint( $term_id );
+    $term_value = get_term_meta($term_id,'category_post_pillar', true );
+    global $wpdb;
+	$test = $wpdb->get_results( "SELECT meta_value FROM xdk_termmeta WHERE term_id = $term_id LIMIT 1");
+	if(count($test) > 0) {
+		foreach ($test as $key => $value) {
+			$ids = maybe_unserialize($value->meta_value);
+			foreach($ids as $value1) {
+				$mypost = get_post($value1);
+				echo $mypost->post_title.",";
+			}
+		}
+	} else {
+		$piller = '';
+	}
+    $mypost = get_post($term_value);
 }
+
+
+// display custom column in podcasts category
+
+
+function manage_my_custom_columns($columns)
+{
+ $columns['pillar'] = "<a href='' id='cat-id'>Pillar</a>";
+ return $columns;
 }
-add_filter ('manage_category_custom_column', 'manage_category_custom_fields', 10,3);
+add_filter('manage_edit-podcast_category_columns','manage_my_custom_columns');
+
+
+// display pillar name in custom column
+
+
+add_filter('manage_podcast_category_custom_column', 'get_term_meta_podcasts', 99, 3 );
+
+function get_term_meta_podcasts( $deprecated, $column_name, $term_id ){
+    if( $column_name !== 'pillar' ){
+		return $deprecated;
+		}    
+    $term_id = absint( $term_id );
+    $term_value = get_term_meta( 33,'category_post_pillar', true );
+    global $wpdb;
+	$test = $wpdb->get_results( "SELECT meta_value FROM xdk_termmeta WHERE term_id = $term_id LIMIT 1");
+	if(count($test) > 0) {
+		foreach ($test as $key => $value) {
+			$ids = maybe_unserialize($value->meta_value);
+			foreach($ids as $value1) {
+				$mypost = get_post($value1);
+				echo $mypost->post_title .",";
+			}
+		}
+	} else {
+		$piller = '';
+	}
+    $mypost = get_post($term_value);
+}
+
+
+// display custom column in vlogs category
+
+
+function manage_my_custom_columns_vlogs($columns)
+{
+ $columns['pillar'] = "<a href='' id='cat-id'>Pillar</a>";
+ return $columns;
+}
+add_filter('manage_edit-vlog_category_columns','manage_my_custom_columns_vlogs');
+
+
+// display pillar name in custom column vlogs
+
+
+add_filter('manage_vlog_category_custom_column', 'get_term_meta_value_vlogs', 99, 3 );
+function get_term_meta_value_vlogs( $deprecated, $column_name, $term_id ){
+  //   if( $column_name !== 'pillar' ){
+		// return $deprecated;
+		// }   
+    $term_id = absint( $term_id );
+    $term_value = get_term_meta( $term_id,'category_post_pillar', true );
+    global $wpdb;
+	$test = $wpdb->get_results( "SELECT meta_value FROM xdk_termmeta WHERE term_id = $term_id LIMIT 1");
+	if(count($test) > 0 ) {
+		foreach ($test as $key => $value) {
+			$ids = maybe_unserialize($value->meta_value);
+			foreach($ids as $value1) {
+				$mypost = get_post($value1);
+				echo $mypost->post_title.",";
+
+			}
+		}
+	} else {
+		$piller = '';
+	}
+    // $mypost = get_post($term_value);
+}
+
+

@@ -126,7 +126,7 @@
 	//#[podcast-pillar]
 	add_shortcode('podcast-pillar', 'podcast_pillar');
 	function podcast_pillar($atts){
-		$limit=$atts['limit'];
+		// $limit=$atts['limit'];
 		if(empty($limit)){
 			$limit=20;
 		}

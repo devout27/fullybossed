@@ -44,7 +44,8 @@ get_header();
 				$slug=$val->slug;
 
 			    $category_post_pillar=get_term_meta($term_id,'category_podcasts_pillar',true);
-				if(in_array($pillar_id,$category_post_pillar)){
+				// if(in_array($pillar_id,$category_post_pillar))
+			    {
 					$nocargory=false;
 		?>
 			<div class="listing-list" style="margin-top:40px; margin-bottom: 0px;">
@@ -57,42 +58,128 @@ get_header();
 		   					<div class="swiper-wrapper">
 
 								<?php
-                                $args=array(
-								'posts_per_page'   => '-1',
-								'orderby'          => 'post_title',
-								'order'            => 'ASC',
-								'post_type'        => 'podcasts',
-								//'category'         => $term_id,
-								'tax_query' => array(
-									array(
-										'taxonomy' => 'podcast_category',
-										'terms' => $term_id,
-										'field' => 'term_id',
-									)
-								),
+						// 1st query not empty
+                $args=array(
+									'posts_per_page'   => '-1',
+									'orderby'          => 'post_title',
+									// 'order'            => 'ASC',
+									'post_type'        => 'podcasts',
+									'meta_query'			 => array(
+										array(
+											'key'					 => 'podcast_3rd_party',
+											'value'				 => array(''),
+											'compare'			 => 'NOT IN',
+										),
+									),
+									'tax_query' => array(
+										array(
+											'taxonomy' => 'podcast_category',
+											'terms' => $term_id,
+											'field' => 'term_id',
+										)
+									),
 								);
 								$posts=query_posts($args);
 
-                                $noPost=true;
-								foreach($posts as $post){
+						// 2nd query empty
+								$args1=array(
+									'posts_per_page'   => '-1',
+									'orderby'          => 'post_title',
+									// 'order'            => 'ASC',
+									'post_type'        => 'podcasts',
+									'meta_query'			 => array(
+										array(
+											'key'					 => 'podcast_3rd_party',
+											'value'				 => array(''),
+											'compare'			 => 'IN',
+										),
+									),
+									'tax_query' => array(
+										array(
+											'taxonomy' => 'podcast_category',
+											'terms' => $term_id,
+											'field' => 'term_id',
+										)
+									),
+								);
+							$Posts1 = query_posts($args1);
+            	$noPost=true;
 
+            // 1st loop
+								foreach($Posts1 as $post1){
+									$post_id1=$post1->ID;
+									$post_title1=$post1->post_title;
+									$post_content1=$post1->post_content;
+									$image_url=get_the_post_thumbnail_url($post_id1);
+									$external_link=get_post_meta($post_id1,'external_link',true);
+									if(empty($image_url)){
+										$image_url='https://fullybossed.com/wp-content/uploads/2021/04/insta-img.jpg';
+									}
+									$podcast_3rd_party=get_post_meta($post_id1,'podcast_3rd_party',true);
+									$podcast_3rd_party=isset($podcast_3rd_party[0]) ? $podcast_3rd_party[0]:'';
+									$permalink=get_permalink($post_id1);
+									$post_post_pillar=get_post_meta($post_id1,'category_podcasts_pillar',true);
+									if(empty($external_link)){
+										$external_link=$permalink;
+									}
+									if(in_array($pillar_id,$post_post_pillar)){
+										$noPost=false;
+								?>
+		   						<div class="swiper-slide">
+		   							<div class="listing-box-single dark">
+		   								<?php if (empty($podcast_3rd_party)) {
+		   								?>
+		   								<a href="<?php echo $external_link;?>" target="_blank">
+		   									<div class="listing-box-img" style="background-image: url(https://fullybossed.com/wp-content/uploads/2021/04/blog-thumb-overlay.png)">
+		   										<div style="background-image: url(<?php echo $image_url?>)"></div>
+											</div>
+		   								</a>
+		   							<?php } ?>
+										<h5 class="mt-2">
+											<a href="<?php echo $external_link?>" target="_blank"><?php echo $post_title1 ?>
+											</a>
+										</h5>
+										<?php
+										if(!empty($podcast_3rd_party)){
+										?>
+										<div class="third-party-tag">
+											<div class="best-tag">
+												<img src="/wp-content/themes/fullybossed/images/decorated-yellow12.png">
+											</div>
+										</div>
+                   <?php } ?>
+												<!--<div class="social-icons">
+													<div>
+														<a target="_blank" href="#"><i class="fab fa-facebook-f"></i></a>
+														<a target="_blank" href="#"><i class="fab fa-instagram"></i></a>
+														<a target="_blank" href="#"><i class="fab fa-linkedin"></i></a>
+														<a target="_blank" href="#"><i class="fab fa-twitter"></i></a>
+														<a target="_blank" href="#"><i class="fab fa-whatsapp"></i></a>
+														<a target="_blank" href="#"><i class="fas fa-envelope"></i></a>
+													</div>
+												</div>-->
+		   							</div>
+		   						</div>
+								<?php
+								   }
+								}
+
+            // 1st loop									
+								foreach($posts as $post){
 									$post_id=$post->ID;
 									$post_title=$post->post_title;
 									$post_content=$post->post_content;
 									$image_url=get_the_post_thumbnail_url($post_id);
-									$external_link=get_post_meta($post_id,'external_link',true);
-									if(empty($image_url)){
-										$image_url='https://fullybossed.com/wp-content/uploads/2021/04/insta-img.jpg';
-									}
+									$external_link=get_post_meta($post_id,'external_link',true);									
 									$podcast_3rd_party=get_post_meta($post_id,'podcast_3rd_party',true);
-									$podcast_3rd_party=isset($podcast_3rd_party[0]) ? $podcast_3rd_party[0]:'';
-									
+									$podcast_3rd_party=isset($podcast_3rd_party[0]) ? $podcast_3rd_party[0]:'';									
 									$permalink=get_permalink($post_id);
 									$post_post_pillar=get_post_meta($post_id,'category_podcasts_pillar',true);
 									if(empty($external_link)){
-
 										$external_link=$permalink;
-
+									}
+									if(empty($image_url)){
+										$image_url='https://fullybossed.com/wp-content/uploads/2021/04/insta-img.jpg';
 									}
 									if(in_array($pillar_id,$post_post_pillar)){
 										$noPost=false;
@@ -109,53 +196,48 @@ get_header();
 											</a>
 										</h5>
 										<?php
-										if(!empty($vlog_3rd_party)){
+										if(!empty($podcast_3rd_party)){
 										?>
 										<div class="third-party-tag">
 											<div class="best-tag">
 												<img src="/wp-content/themes/fullybossed/images/decorated-yellow12.png">
 											</div>
 										</div>
-                                        <?php
-										}?>
-		                               	<!--<div class="social-icons">
-		                               		<div>
-		                                      	<a target="_blank" href="#"><i class="fab fa-facebook-f"></i></a>
-		                                      	<a target="_blank" href="#"><i class="fab fa-instagram"></i></a>
-		                                      	<a target="_blank" href="#"><i class="fab fa-linkedin"></i></a>
-		                                  		<a target="_blank" href="#"><i class="fab fa-twitter"></i></a>
-		                                  		<a target="_blank" href="#"><i class="fab fa-whatsapp"></i></a>
-										   		<a target="_blank" href="#"><i class="fas fa-envelope"></i></a>
-		                              		</div>
-		                           		</div>-->
+                    <?php } ?>
+		                   <!--<div class="social-icons">
+                       				<div>
+                              	<a target="_blank" href="#"><i class="fab fa-facebook-f"></i></a>
+                              	<a target="_blank" href="#"><i class="fab fa-instagram"></i></a>
+                              	<a target="_blank" href="#"><i class="fab fa-linkedin"></i></a>
+                          			<a target="_blank" href="#"><i class="fab fa-twitter"></i></a>
+                          			<a target="_blank" href="#"><i class="fab fa-whatsapp"></i></a>
+				   											<a target="_blank" href="#"><i class="fas fa-envelope"></i></a>
+                      				</div>
+		       					     		</div>-->
 		   							</div>
 		   						</div>
 								<?php
 								   }
 								}
-								if($noPost){?>
+								if($noPost) { ?>
 								    <div class="col-md-12">
 								    <h3>No Podcasts found this category</h3>
 								    </div>
-								<?php
-								}?>
+								<?php } ?>
 		   					</div>
 		   					<div class="swiper-pagination"></div>
 		   				</div>
 		   			</div>
 			    </div>
 			</div>
-		<?php
-			}
-		}?>
+		<?php } } ?>
 		<?php
 		if($nocargory){
 		?>
 		<div class="col-md-12">
 			<h3>No Podcasts found</h3>
 		</div>
-		<?php }
-		?>
+		<?php } ?>
 		</div>
 	</div>
 </div>

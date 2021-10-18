@@ -3683,3 +3683,6 @@ class wpdb {
 		return $server_info;
 	}
 }
+
+// define( 'WP_MAX_MEMORY_LIMIT' , '128M' );
+// define( 'WP_MEMORY_LIMIT' , '64M' );

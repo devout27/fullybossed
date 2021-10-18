@@ -44,7 +44,8 @@ get_header();
 				$slug=$val->slug;
 
 			    $category_post_pillar=get_term_meta($term_id,'category_pillar',true);
-				if(in_array($pillar_id,$category_post_pillar)){
+			    // print_r($category_post_pillar);
+				// if(in_array($pillar_id,$category_post_pillar)){
 					$nocargory=false;
 		?>
 			<div class="listing-list" style="margin-top:40px; margin-bottom: 0px;">
@@ -55,48 +56,134 @@ get_header();
 				    <div class="listing-box">
 				    	<div class="swiper-container blog-slide1">
 		   					<div class="swiper-wrapper">
-
 								<?php
-                                $args=array(
-								'posts_per_page'   => '-1',
-								'orderby'          => 'post_title',
-								'order'            => 'ASC',
-								'post_type'        => 'vlogs',
-								//'category'         => $term_id,
-								'tax_query' => array(
-									array(
-										'taxonomy' => 'vlog_category',
-										'terms' => $term_id,
-										'field' => 'term_id',
-									)
-								),
+						// 1st query not empty
+                $args=array(
+									'posts_per_page'   => '-1',
+									'orderby'          => 'post_date',
+									// 'order'            => 'ASC',
+									'post_type'        => 'vlogs',
+									'meta_query'			 => array(
+										array(
+											'key'			=> 'vlog_3rd_party',
+											'value'		=> array(''),
+											'compare'	=> 'NOT IN',
+										),
+									),
+									'tax_query' => array(
+										array(
+											'taxonomy' 		=> 'vlog_category',
+											'terms' 			=> $term_id,
+											'field' 			=> 'term_id',
+										),
+									),
 								);
 								$posts=query_posts($args);
 
-                                $noPost=true;
-								foreach($posts as $post){
+					// 2nd query empty
+								$args1=array(
+									'posts_per_page'   => '-1',
+									'orderby'          => 'post_date',
+									'post_status'			 =>  'publish',
+									// 'order'            => 'ASC',
+									'post_type'        => 'vlogs',
+									'offset' 					 =>  0,
+									'meta_query'			 => array(
+										array(
+											'key'			=> 'vlog_3rd_party',
+											'value'		=> array(''),
+											'compare'	=> 'IN',
+										),
+									),
+									'tax_query' => array(
+										array(
+											'taxonomy' 		=> 'vlog_category',
+											'terms' 			=> $term_id,
+											'field' 			=> 'term_id',
+										),
+									),
+								);			
+								// print_r($args1);				
+								$posts1=query_posts($args1);
+                $noPost=true;
+            // 1st loop
+                foreach($posts1 as $post2){
+									$post_id2=$post2->ID;
+									$post_title2=$post2->post_title;
+									$post_content2=$post2->post_content;
+									$image_url=get_the_post_thumbnail_url($post_id2);
+									$external_link=get_post_meta($post_id2,'external_link',true);									
+									$vlog_3rd_party=get_post_meta($post_id2,'vlog_3rd_party',true);
+									$vlog_3rd_party=isset($vlog_3rd_party[0]) ? $vlog_3rd_party[0]:'';									
+									$permalink=get_permalink($post_id2);
+									$post_post_pillar=get_post_meta($post_id2,'category_pillar',true);
+									if(empty($external_link)){
+										$external_link=$permalink;
+									}
+									if(empty($image_url)){									
+										$image_url='https://fullybossed.com/wp-content/uploads/2021/04/insta-img.jpg';									
+									}
+									// if(in_array($pillar_id,$post_post_pillar)){
+										$noPost=false;
+								?>
+		   						<div class="swiper-slide">
+		   							<div class="listing-box-single dark">
+		   								<?php if (empty($vlog_3rd_party)) {
+		   								 ?>
+		   								<a href="<?php echo $external_link;?>" target="_blank">
+		   									<div class="listing-box-img" style="background-image: url(https://fullybossed.com/wp-content/uploads/2021/04/blog-thumb-overlay.png)">
+		   										<div style="background-image: url(<?php echo $image_url?>)"></div>
+											</div>
+		   								</a>
+		   							<?php } ?>
+										<h5 class="mt-2">
+											<a href="<?php echo $external_link?>" target="_blank"><?php echo $post_title2?>
+											</a>
+										</h5>
+										<?php
+										if(!empty($vlog_3rd_party)){
+										?>
+										<div class="third-party-tag">
+											<div class="best-tag">
+												<img src="/wp-content/themes/fullybossed/images/decorated-yellow12.png">
+											</div>
+										</div>
+                    <?php } ?>
+		                <!--<div class="social-icons">
+													<div>
+														<a target="_blank" href="#"><i class="fab fa-facebook-f"></i></a>
+														<a target="_blank" href="#"><i class="fab fa-instagram"></i></a>
+														<a target="_blank" href="#"><i class="fab fa-linkedin"></i></a>
+														<a target="_blank" href="#"><i class="fab fa-twitter"></i></a>
+														<a target="_blank" href="#"><i class="fab fa-whatsapp"></i></a>
+														<a target="_blank" href="#"><i class="fas fa-envelope"></i></a>
+													</div>
+												</div>-->
+		   							</div>
+		   						</div>
+								<?php
+								// }
+								}
 
+					// 2nd loop
+								foreach($posts as $post){
 									$post_id=$post->ID;
 									$post_title=$post->post_title;
 									$post_content=$post->post_content;
 									$image_url=get_the_post_thumbnail_url($post_id);
-									$external_link=get_post_meta($post_id,'external_link',true);
-									if(empty($image_url)){
-										
-										$image_url='https://fullybossed.com/wp-content/uploads/2021/04/insta-img.jpg';
-										
-									}
+									$external_link=get_post_meta($post_id,'external_link',true);									
 									$vlog_3rd_party=get_post_meta($post_id,'vlog_3rd_party',true);
-									$vlog_3rd_party=isset($vlog_3rd_party[0]) ? $vlog_3rd_party[0]:'';
-									
+									$vlog_3rd_party=isset($vlog_3rd_party[0]) ? $vlog_3rd_party[0]:'';									
 									$permalink=get_permalink($post_id);
 									$post_post_pillar=get_post_meta($post_id,'category_pillar',true);
+
 									if(empty($external_link)){
-
 										$external_link=$permalink;
-
 									}
-									if(in_array($pillar_id,$post_post_pillar)){
+									if(empty($image_url)){										
+										$image_url='https://fullybossed.com/wp-content/uploads/2021/04/insta-img.jpg';		
+									}
+									// if(in_array($pillar_id,$post_post_pillar)){
 										$noPost=false;
 								?>
 		   						<div class="swiper-slide">
@@ -118,24 +205,23 @@ get_header();
 												<img src="/wp-content/themes/fullybossed/images/decorated-yellow12.png">
 											</div>
 										</div>
-                                        <?php
-										}?>
-		                               	<!--<div class="social-icons">
-		                               		<div>
-		                                      	<a target="_blank" href="#"><i class="fab fa-facebook-f"></i></a>
-		                                      	<a target="_blank" href="#"><i class="fab fa-instagram"></i></a>
-		                                      	<a target="_blank" href="#"><i class="fab fa-linkedin"></i></a>
-		                                  		<a target="_blank" href="#"><i class="fab fa-twitter"></i></a>
-		                                  		<a target="_blank" href="#"><i class="fab fa-whatsapp"></i></a>
-										   		<a target="_blank" href="#"><i class="fas fa-envelope"></i></a>
-		                              		</div>
-		                           		</div>-->
+                    <?php } ?>
+		               	<!--<div class="social-icons">
+													<div>
+														<a target="_blank" href="#"><i class="fab fa-facebook-f"></i></a>
+														<a target="_blank" href="#"><i class="fab fa-instagram"></i></a>
+														<a target="_blank" href="#"><i class="fab fa-linkedin"></i></a>
+														<a target="_blank" href="#"><i class="fab fa-twitter"></i></a>
+														<a target="_blank" href="#"><i class="fab fa-whatsapp"></i></a>
+														<a target="_blank" href="#"><i class="fas fa-envelope"></i></a>
+													</div>
+												</div>-->
 		   							</div>
 		   						</div>
 								<?php
+								// }
 								}
-								}
-								if($noPost){?>
+								if($noPost) { ?>
 								    <div class="col-md-12">
 								    <h3>No vlogs found this category</h3>
 								    </div>
@@ -148,8 +234,8 @@ get_header();
 			    </div>
 			</div>
 		<?php
-			}
-		}?>
+			//}
+		 } ?>
 		<?php
 		if($nocargory){
 		?>
