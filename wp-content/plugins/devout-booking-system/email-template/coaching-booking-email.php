@@ -13,15 +13,16 @@
       </div>
    </div>
    <div style="width: 100%; padding: 20px 0 20px; background-color: #fff; text-align: center; border: 1px solid #000; border-top: none; border-bottom: none;">
-      <div style="font-size: 20.0px;text-align: center;margin: 0 0 0 0;color: rgb(0,0,0);font-weight: 600;background: #FFDA67;display: inline-block;padding: 10.0px 20.0px; font-family: Gotham;"><?php echo $subject;?></div>
+      <div style="font-size: 20.0px;text-align: center;margin: 0 0 0 0;color: rgb(0,0,0);font-weight: 600; /*background: #FFDA67;*/ display: inline-block;padding: 10.0px 20.0px; font-family: Gotham;"><?php echo $subject;?></div>
+      <hr style="width: 40%; margin: 10px auto; color: #FFDA67; height: 2px; background: #FFDA67; border: none;">
    </div>
-   <div class="Dear" style="width: 602px; color: #000; background-color: #fff;  box-sizing: border-box; padding: 0 0px 0 30px; font-size: 18px; border: 1px solid #000; border-top: none; border-bottom: none;"">
+   <div class="Dear" style="width: 602px; color: #000; background-color: #fff;  box-sizing: border-box; padding: 0 30px 0 30px; font-size: 18px; border: 1px solid #000; border-top: none; border-bottom: none;"">
      <?php echo $body;?>
    </div>
     <div class="content" style="width: 602px; color: #fff; padding: 15px 0 5px; background-color: #fff; box-sizing: border-box; border: 1px solid #000; border-top: none; border-bottom: none;">
       <div style="padding: 0 30.0px;text-align: left;font-size: 14.0px;">
         <div>
-          <hr style="width: 35%; margin: 10px auto; color: #a8d08d;">
+          <hr style="width: 35%; margin: 10px auto; color: #a8d08d; border: none; height: 2px; background: #a8d08d;">
           <h5 style="font-size: 18.0px;line-height: 25.0px;display: block;margin: 0.0px 0.0px 15.0px 0.0px;padding: 15.0px 0.0px 0.0px 0.0px;color: rgb(51,51,51);text-transform: uppercase;letter-spacing: 1.0px; font-family: GoudyOS; color: #000;">Booking Details</h5>
 
           <p style="line-height: 25.0px;display: block;margin: 0.0px 0.0px 20.0px 0.0px;padding: 0 0; color: rgb(51,51,51); color: #000; font-family: Gotham;">
@@ -43,7 +44,7 @@
 			</p>
           </div>
 		  <div>
-        <hr style="width: 35%; margin: 10px auto; color: #a8d08d;">
+        <hr style="width: 35%; margin: 10px auto; color: #a8d08d; border: none; height: 2px; background: #a8d08d;">
             <h5 style="font-size: 18.0px;line-height: 25.0px;display: block;margin: 0.0px 0.0px 15.0px 0.0px;padding: 15.0px 0.0px 0.0px 0.0px;color: rgb(51,51,51);text-transform: uppercase;letter-spacing: 1.0px; color: #000; font-family: GoudyOS;">Payment</h5>
             <p style="line-height: 25.0px;display: block;margin: 0.0px 0.0px 20.0px 0.0px;color: rgb(51,51,51); color: #000; font-family: Gotham;">
               Name: <strong style="color: rgb(0,0,0); color: #000; float: right; font-weight: 600;"><?php echo $booking['name']?></strong> <br>
@@ -63,7 +64,7 @@
 		 <?php if(count($ZoomMeetingDetails) > 0) {
 		 ?>
 		 <div>
-      <hr style="width: 35%; margin: 10px auto; color: #a8d08d;">
+      <hr style="width: 35%; margin: 10px auto; color: #a8d08d; border: none; height: 2px; background: #a8d08d;">
 			<h5 style="font-size: 18px;line-height: 25px;display: block;margin: 0.0px 0.0px 15.0px 0.0px;padding: 15.0px 0.0px 0.0px 0.0px;color: rgb(51,51,51);text-transform: uppercase;letter-spacing: 1.0px; color: #000; font-family: GoudyOS;">Fully Bossed is inviting you to a scheduled Zoom meeting.</h5>
             <p style="line-height: 25.0px;display: block;margin: 0.0px 0.0px 20.0px 0.0px;color: rgb(51,51,51); color: #000; font-family: Gotham;">
               Topic: <strong style="color: rgb(0,0,0); color: #000; float: right; font-weight: 600;"><?php echo $ZoomMeetingDetails[0]->topic;?></strong> <br>
@@ -82,13 +83,23 @@
 		 <?php
 		 }?>
           <div>
-            <hr style="width: 35%; margin: 10px auto; color: #a8d08d;">
+            <hr style="width: 35%; margin: 10px auto; color: #a8d08d; border: none; height: 2px; background: #a8d08d;">
             <h5 style="font-size: 18.0px;line-height: 25.0px;display: block;margin: 0.0px 0.0px 15.0px 0.0px;padding: 15.0px 0.0px 0.0px 0.0px;color: rgb(51,51,51); color: #000; text-transform: uppercase;letter-spacing: 1.0px; font-family: GoudyOS;">User Details</h5>
             <p style="line-height: 25.0px;display: block;margin: 0.0px 0.0px 20.0px 0.0px;color: rgb(51,51,51); color: #000; font-family: Gotham;">
               Who You are?: <strong style="color: rgb(0,0,0); color: #000; float: right; font-weight: 600;"><?php echo $booking['who_you_are']?></strong><br>
              Current position: <strong style="color: rgb(0,0,0); color: #000; float: right; font-weight: 600;"><?php echo $booking['current_position']?></strong><br>
 			 Interested content: <strong style="color: rgb(0,0,0); color: #000; float: right; font-weight: 600;"><?php echo $booking['interested_content']?></strong><br>
-			 Booking Type: <strong style="color: rgb(0,0,0); color: #000; float: right; font-weight: 600;"><?php echo $booking['booking_type']?></strong><br>
+			 Booking Type: <strong style="color: rgb(0,0,0); color: #000; float: right; font-weight: 600;">
+			 <?php echo $booking['booking_type']?></strong><br>
+			 <?php 
+			 if($booking['booking_type']=='Group Coaching'){
+				 
+			 ?>
+			     Number of Group Members: <strong style="color: rgb(0,0,0); color: #000; float: right; font-weight: 600;"><?php echo $booking['number_of_group_members']?></strong>
+				 <br>
+			 <?php 
+			 }?>
+			 Is it your 1st session?: <strong style="color: rgb(0,0,0); color: #000; float: right; font-weight: 600;"><?php echo $booking['first_session']?></strong><br>
              Goals: <strong style="color: rgb(0,0,0); color: #000; float: right; font-weight: 600;"><?php echo $booking['goals']?></strong><br>
              Top strength: <strong style="color: rgb(0,0,0); color: #000; float: right; font-weight: 600;"><?php echo $booking['top_strength']?></strong><br>
              Top development point: <strong style="color: rgb(0,0,0); color: #000; float: right; font-weight: 600;"><?php echo $booking['top_development_point']?></strong><br>
@@ -101,8 +112,8 @@
           </div>
           </div>
           <div style="width: 100%;color: #fff; box-sizing: border-box; padding: 0 0px 0 30px;">
-          <hr style="width: 35%; margin: 10px auto; color: #a8d08d;">
-            <p style="line-height: 25.0px;display: block;margin: 15px 0 10px 0;color: rgb(51,51,51); color: #000; font-family: Gotham;">Thank You, <br> Team Fully Bossed.</p>
+          <hr style="width: 35%; margin: 10px auto; color: #a8d08d; border: none; height: 2px; background: #a8d08d;">
+            <p style="line-height: 25.0px;display: block;margin: 15px 0 10px 0;color: rgb(51,51,51); color: #000; font-family: Gotham;">Thanks <br> Team Fully Bossed.</p>
           </div>
     </div>
     <div class="footer" style="width: 602px; text-align: center; color: #000; border-top: solid 1px #00000085; background-color: #A8D08D; padding: 5px 0 5px;">

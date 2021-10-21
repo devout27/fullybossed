@@ -14,6 +14,7 @@
     } else {
         $discount = 0;
     }
+	
     // print_r($found_key);
     // print_r($discount_rules);
     // if (in_array($slot_hours, $fb_bd_hours_input)) {

@@ -17,6 +17,8 @@ $image_url=get_the_post_thumbnail_url($post_id);
 $external_link=get_post_meta($post_id,'external_link',true);
 $post_3rd_party=get_post_meta($post_id,'post_3rd_party',true);
 $post_3rd_party=isset($post_3rd_party[0]) ? $post_3rd_party[0]:'';
+$video_url_id=get_post_meta($post_id,'video_url',true);
+$video_url=wp_get_attachment_url($video_url_id);
 if(empty($image_url)){
 	
 	$image_url='https://fullybossed.com/wp-content/uploads/2021/04/insta-img.jpg';
@@ -42,9 +44,30 @@ $post_post_pillar=get_post_meta($post_id,'category_post_pillar',true);
    </div>
    <div class="container">
    <div class="row single-ping">
-       <div class="single-p-img"><img src="<?php echo $image_url?>"></div>
+       <div class="single-p-img">
+	   <img src="<?php echo $image_url?>"></div>
+	    <?php if(!empty($video_url)){?>
+		<div class="col-sm-12">
+		 <video width="100%" height="100%" controls autoplay>
+		  <source src="<?php echo $video_url?>" type="video/mp4">
+		  <source src="<?php echo $video_url?>" type="video/ogg">
+		  <source src="<?php echo $video_url?>" type="video/webm">
+		  Your browser does not support the video tag.
+		</video> 
+		</div>
+		<?php 
+		}?>
 	    <div class="col-sm-12">
-		   <p><?php echo $post_content ?></p>
+		   <!--<p><?php echo $post_content ?></p>-->
+		   <?php
+			if ( have_posts() ) :
+			while ( have_posts() ) : the_post();
+				the_content();
+			endwhile;
+			else :
+				_e( 'Sorry, no posts were found.', 'textdomain' );
+			endif;
+	       ?>
 	   </div>
    </div>
   </div>

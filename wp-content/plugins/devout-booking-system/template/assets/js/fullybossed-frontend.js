@@ -651,7 +651,7 @@
                                               
                       } else{
                         jQuery("#loder-img").hide();	
-                        jQuery("#login-msg").html(data.msg);					
+                        jQuery("#login-msg").html(response.msg);					
                       }
                   }, error: function (error) {
                     jQuery("#loder-img").hide();	

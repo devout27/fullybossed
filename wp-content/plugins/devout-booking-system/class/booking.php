@@ -73,7 +73,7 @@ function emailTemplate($subject, $body)
 </div>';
     return $html;
 }
-#echo getBookingEmailHtml('Test','203','tthistestingboddy'); die();
+#echo getBookingEmailHtml('Test test test test test test test test test test ','203','tthistestingboddy'); die();
 function getBookingEmailHtml($subject,$booking_id,$body=null)
 {
 	$booking = getBookingById($booking_id);
@@ -287,9 +287,15 @@ function coaching_GetBookingHtml($booking_id) {
 
 		$html .='<p style="line-height: 25px; display: block; margin: 0px 0px 20px 0px; color: #333;">	Interested content: <strong style="color: #000; font-weight: 600;">' .$booking['interested_content']. '</strong></p>';
 
-		$html .='<p style="line-height: 25px; display: block; margin: 0px 0px 20px 0px; color: #333;">	Booking type:: <strong style="color: #000; font-weight: 600;">' .$booking['booking_type']. '</strong></p>';
-
+		$html .='<p style="line-height: 25px; display: block; margin: 0px 0px 20px 0px; color: #333;">	Booking type: <strong style="color: #000; font-weight: 600;">' .$booking['booking_type']. '</strong></p>';
+		
+		if($booking['booking_type']=='Group Coaching'){
+		   $html .='<p style="line-height: 25px; display: block; margin: 0px 0px 20px 0px; color: #333;">	Number of Group Members: <strong style="color: #000; font-weight: 600;">' .$booking['number_of_group_members']. '</strong></p>';
+		}
+		$html .='<p style="line-height: 25px; display: block; margin: 0px 0px 20px 0px; color: #333;">	Is it your 1st session?: <strong style="color: #000; font-weight: 600;">' .$booking['first_session']. '</strong></p>';
+		
 		$html .='<p style="line-height: 25px; display: block; margin: 0px 0px 20px 0px; color: #333;">	Goals: <strong style="color: #000; font-weight: 600;">' .$booking['goals']. '</strong></p>';
+		
 
 		$html .='<p style="line-height: 25px; display: block; margin: 0px 0px 20px 0px; color: #333;">	Top strength: <strong style="color: #000; font-weight: 600;">' .$booking['top_strength']. '</strong></p>';
 
@@ -862,6 +868,9 @@ function coachingbookingSave(){
 		$postData['current_position'] = $_POST['current_position'];
 		$postData['interested_content'] = $_POST['interested_content'];
 		$postData['booking_type'] = $_POST['booking_type'];
+		$postData['first_session'] = $_POST['first_session'];
+		$postData['number_of_group_members'] = !empty($_POST['number_of_group_members']) ? $_POST['number_of_group_members']:0;
+		
 		$postData['goals'] = $_POST['goals'];
 		$postData['top_strength'] = $_POST['top_strength'];
 		$postData['top_development_point'] = $_POST['top_development_point'];
@@ -895,10 +904,11 @@ function coachingbookingSave(){
 
 		$table = 'XDk_dc_bookings';
 		$postData['created'] = $postData['updated']=date('Y-m-d H:i:s');
-		//pr($postData);
+		#pr($postData,1);
 		$insert_id = insertRow($table,$postData);
-
+		
 		if($insert_id > 0){
+			
 			foreach($booking_sub_slot_time as $value) {
 				$from_to_time = explode('-',trim($value));
 				$json['msg'] = 'Booking payment processing successed';
@@ -919,6 +929,7 @@ function coachingbookingSave(){
 			$json['msg'] = 'Booking payment processing failed please retry';
 		}
     }
+	
 	echo json_encode($json);
 	exit();
 }
@@ -1019,7 +1030,7 @@ function speakingBookingSave(){
 				$fullname=$name.' '.$surname;
 				$subject='Fully Bossed | New Speaker Request';
 				$body="<p style='margin: 0; padding: 0 0 6px 9px; font-family: Gotham;'> Hello $fullname,</p>
-				<p style='margin: 0; padding: 0 0 6px 9px; font-family: Gotham;'>Thank you very much for considering Fully Bossed for speaking at your upcoming event. We carefully select who we're able to work with and we are delighted to have the opportunity to work with you!</p><p style='margin: 0; padding: 0 0 6px 9px; font-family: Gotham;'>For us every speaking opportunity is a chance to create an experience whilst putting irresistible storytelling in action. We live for those moments. We look forward to your event and delivering a memorable speaking experience for you and your audience.</p><p style='margin: 0; padding: 0 0 6px 9px; font-family: Gotham;'>Before we can get going, we need you to complete payment (insert hyperlink on the word payment) within 24hrs so we can confirm your booking. A breakdown of the payment and the booking details are shown below for your convenience.</p>";
+				<p style='margin: 0; padding: 0 0 6px 9px; font-family: Gotham;'>Thank you very much for considering Fully Bossed for speaking at your upcoming event.</p><p style='margin: 0; padding: 0 0 6px 9px; font-family: Gotham;'>For us every speaking opportunity is a chance to create an experience whilst putting irresistible storytelling in action. We live for those moments.</p><p style='margin: 0; padding: 0 0 6px 9px; font-family: Gotham;'>We are working hard to review your requests and others and we will get back within 48hrs to confirm our attendance or ask for more information.</p>";
 				$body = getSpeakingBookingEmailHtml($subject,$insert_id,$body);
 				$headers = array('Content-Type: text/html; charset=UTF-8');
                 $headers[] = 'From: Fully Bossed <info@fullybossed.com>';
@@ -1050,16 +1061,16 @@ function speakingBookingRequestApproved($booking_id){
 			$bookingData=getBookingById($booking_id);
 			$email=$bookingData['email'];
 
-			$subject='Fully Bossed | Speaker Request - Now Approved';
+			$subject='Fully Bossed | New Speaker Request Approved – Payment Required';
 			$paynow_link=home_url();
 			$name=$bookingData['name'].' '.$bookingData['surname'];
 
 			$paynow_link .='/speaking-booking-payment/?code='.base64_encode($booking_id);
 			$body="<p style='margin: 0; padding: 0 0 6px 9px; font-family: Gotham;'> Hello $name,</p>
 			<p style='margin: 0; padding: 0 0 6px 9px; font-family: Gotham;'>
-			Thank you very much for considering Fully Bossed for speaking at your upcoming event. We carefully select who we're able to work with and we are delighted to have the opportunity to work with you!.</p>
+			Thank you again for considering Fully Bossed to speak at your upcoming event. We carefully select who we're able to work with and we are happy to confirm that we would be delighted to have the opportunity to work with you!</p>
 			<p style='margin: 0; padding: 0 0 6px 9px; font-family: Gotham;'>
-			For us every speaking opportunity is a chance to create an experience whilst putting irresistible storytelling in action. We live for those moments. We look forward to your event and delivering a memorable speaking experience for you and your audience.</p>
+			We look forward to your event and delivering a memorable speaking experience for you and your audience.</p>
 			<p style='margin: 0; padding: 0 0 6px 9px; font-family: Gotham;'>
             Before we can get going, we need you to complete <a href='".$paynow_link."'>payment </a>  within 24hrs so we can confirm your booking. A breakdown of the payment and the booking details are shown below for your convenience.</p>";
 			$body = getSpeakingBookingEmailHtml($subject,$booking_id,$body);
@@ -1496,13 +1507,13 @@ function fb_subscribe_us_callback(){
 
 		$type = $_POST['type'];
 		if($type=='home'){
-			
+
 			$email=$_POST['home_email'];
 			$name=$_POST['home_name'];
 			$postData['email'] = $email;
 			$postData['name'] = $name;
 		}else{
-			
+
 			$email=$_POST['email'];
 			$name=$email;
 			$postData['email'] = $email;
@@ -1511,7 +1522,7 @@ function fb_subscribe_us_callback(){
 		$table = 'XDk_dc_subscribe_emails';
 		$postData['created'] = $postData['updated']=date('Y-m-d H:i:s');
 		$insert_id = insertRow($table,$postData);
-		
+
 		if($insert_id > 0){
 
 				$json['msg'] = 'Thank you for subscribing with us! We’re delighted you’ve joined the Fully Bossed tribe.';
@@ -1544,7 +1555,7 @@ function fb_subscribe_us_callback(){
 				$admin_email = ADMIN_EMAIL;
 				$headers[] = "Cc: $admin_email";
 				wp_mail($email, $subject, $body, $headers);
-				
+
 
 		} else {
 			$json['msg'] = 'Your  subscribing request has been  processed unsuccessfully';

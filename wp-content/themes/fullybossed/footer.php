@@ -55,7 +55,7 @@
       			<div class="modal-head dark">
       					<h3>Subscribe Us!</h3>
       				 <div class="dark bown-p-booking">
-      					<p>Follow our journey and make sure you get our latest insights, tips and news about our events"</p>
+      					<p>Follow our journey and make sure you get our latest insights, tips and news about our events</p>
       				</div>
 	    			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	          			<i class="fas fa-times"></i>
@@ -174,7 +174,7 @@
 </div>
 
 <?php wp_footer(); ?>
-<script src="<?php //echo home_url().'/wp-content/plugins/'.PLUGIN_DIR_NAME.'/template/assets/js/validation.js'?>"></script>
+<script src="<?php echo home_url().'/wp-content/plugins/'.PLUGIN_DIR_NAME.'/template/assets/js/validation.js'?>"></script>
 </body>
 <script>
 		$(".icon").click(function(){

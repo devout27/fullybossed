@@ -26,6 +26,9 @@ if(empty($external_link)){
 	$external_link=$permalink;
 }
 $post_post_pillar=get_post_meta($post_id,'category_post_pillar',true);
+if(empty($image_url)){
+	$image_url='https://fullybossed.com/wp-content/uploads/2021/04/insta-img.jpg';
+}
 
 ?>
 <div class="content">
@@ -44,7 +47,16 @@ $post_post_pillar=get_post_meta($post_id,'category_post_pillar',true);
    <div class="row single-ping">
        <div class="single-p-img"><img src="<?php echo $image_url?>"></div>
 	    <div class="col-sm-12">
-		   <p><?php echo $post_content ?></p>
+		   <p><?php //echo $post_content ?></p>
+			<?php
+			if ( have_posts() ) :
+			while ( have_posts() ) : the_post();
+				the_content();
+			endwhile;
+			else :
+				_e( 'Sorry, no posts were found.', 'textdomain' );
+			endif;
+	       ?>
 	   </div>
    </div>
   </div>
