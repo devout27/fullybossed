@@ -80,21 +80,28 @@
 										<div class="col-md-6">
 											<div class="u-form-single">
 												<label>Coaching type:</label>
-												<select name="booking_type" required class="bc_booking_type">
-													<option value="session">1 on 1 Coaching</option>
-													<option value="group session">Group Coaching</option>
+												<select name="booking_type" required class="bc_booking_type" id="booking_type">
+													<option value="1 on 1 Coaching">1 on 1 Coaching</option>
+													<option value="Group Coaching">Group Coaching</option>
 												</select>
 											</div>
 										</div>
-
+										
 										<div class="col-md-6">
 											<div class="u-form-single">
 											<label>Is it your 1st session?</label>
-												<select name="booking_type" required class="session_type_opt">
+												<select name="first_session" required class="session_type_opt">
 												<option value="">Select</option>
 													<option value="yes">Yes</option>
 													<option value="no">No</option>
 												</select>
+											</div>
+										</div>
+										
+										 <div class="col-md-6" style="display:none;" id="number_of_group_members-div">
+											<div class="u-form-single">
+											 <label>Number of Group Members</label>
+											<input type="number" placeholder="Number of Group members" name="number_of_group_members" class="group_members" value="1">
 											</div>
 										</div>
 										</div>
@@ -198,7 +205,7 @@
 									 <?php
 									 }?>
                                      <?php
-									 if(in_array($session['service_id'],array(223))){
+									 /*if(in_array($session['service_id'],array(223))){
 	                                 ?>
 										<div class="col-md-6">
 											<div class="u-form-single">
@@ -210,7 +217,7 @@
 											</div>
 										</div>
 									 <?php
-									}?>
+									}*/?>
                                     <?php
 									 if(in_array($session['service_id'],array(195,223))){
 	                                 ?>
@@ -672,6 +679,16 @@
 </script>
 
 <script type="text/javascript">
+jQuery( "#booking_type" ).change(function() {
+ booking_type=jQuery(this).val();
+ if(booking_type=='Group Coaching'){
+	 
+	 jQuery("#number_of_group_members-div").show();
+ }else{
+	 
+	  jQuery("#number_of_group_members-div").hide();
+ }
+});
 //  var config = `var defaultConfig = {
 //   weekDayLength: 1,
 //   //date: new Date(),

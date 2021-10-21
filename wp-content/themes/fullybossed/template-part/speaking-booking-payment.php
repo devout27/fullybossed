@@ -1,25 +1,25 @@
-<?php 
+<?php
 /*
  * Template Name: Speaking Booking Payment Template
  * @link https://codex.wordpress.org/Template_Hierarchy
  * @page FullyBossed
  * @since FullyBossed 1.0
  */
- 
+
 	$booking_id = isset($_REQUEST['code']) ? base64_decode($_REQUEST['code']) : '';
 	if(empty($booking_id)){
-		
+
 		wp_redirect(home_url());
 	}
 	$booking = getBookingById($booking_id);
-	
+
 	if($booking['status'] !=4){
-		
+
 		//wp_redirect(home_url());
 	}
  	get_header();
  	if(isset($_POST['action']) && $_POST['action'] == 'booking-payment'){
-		
+
 		$booking_id = $_POST['booking_id'];
 		$service_type = $_POST['service_type'];
 		$postData['card_number'] = $_POST['card_number'];
@@ -33,12 +33,12 @@
 		$email = $booking['email'];
 		$name = $booking['name'];
 		$fullName=$booking['name'].' '.$booking['surname'];
-		
+
 		$item_name = $booking['session_name'];
 		$total = $booking['total'];
-		
+
 		if(!empty($booking_id)){
-			
+
 			$STRIPE_SECRET_KEY = STRIPE_SECRET_KEY;
 			$stripe = new \Stripe\StripeClient($STRIPE_SECRET_KEY);
 			$customer = $stripe->customers->create([
@@ -47,43 +47,43 @@
 			'source'  => $stripeToken
 			]);
 			$txn_id = $payment_customer_id = $balance_transaction='';
-			
+
 			if(!empty($customer->id)){
-				
+
 			$total_amount = $total*100;
-			//Charge a credit or a debit card 
+			//Charge a credit or a debit card
 			$charge = $stripe->charges->create(array(
-						'customer'    => $customer->id, 
-						'amount'      => $total_amount, 
+						'customer'    => $customer->id,
+						'amount'      => $total_amount,
 						'currency'    => CURRENCY,
-						'description' => 'buy '.$item_name, 
+						'description' => 'buy '.$item_name,
 						'metadata' => array(
-						'customer_email' =>$email					
-						) 
-				));			
-				$chargeJson = $charge->jsonSerialize(); 
+						'customer_email' =>$email
+						)
+				));
+				$chargeJson = $charge->jsonSerialize();
 				$status = $chargeJson['status'];
 				$balance_transaction = $chargeJson['balance_transaction'];
 				$payment_id = $chargeJson['id'];
 				$payment_customer_id = $customer->id;
-				
+
 				if($status == "succeeded"){
-					
+
 					$txn_id = $payment_id;
 				}
 			}
-			
+
 			if(!empty($txn_id)){
-				
+
 				$postData['status'] = 2;
 				$postData['payment_status'] = 2;
-				
+
 			}else{
-				
+
 				$postData['status'] = 1;
 				$postData['payment_status'] = 3;
 			}
-			
+
 			$postData['id'] = $booking_id;
 			$postData['transaction_id'] = $txn_id;
 			$postData['balance_transaction_id'] = $balance_transaction;
@@ -93,33 +93,33 @@
 			/*//Zoom links data insertion
 			include $_SERVER['DOCUMENT_ROOT'].'/wp-content/themes/fullybossed/zoom-meeting-code/config.php';
 			include $_SERVER['DOCUMENT_ROOT'].'/wp-content/themes/fullybossed/zoom-meeting-code/api.php';
-			
+
 			$sql_session_all_dates = "SELECT * FROM XDk_dc_session_booking_dates WHERE booking_id = '$booking_id'";
-			
+
 			$get_booked_all_slots = getRowByID($sql_session_all_dates);
 			$duration = 0;
 			$total_hours=$get_booked_all_slots['total_hours'];
 			$duration=$total_hours*60;
-			
+
 			$start_end_time = date("y-m-d h:i A", strtotime($get_booked_all_slots['session_date']." ".$get_booked_all_slots['from_time']));
-			
+
 			$zoom_meeting_topic=$booking['heading_topic'];
-			
+
 			$arr = array();
 			$arr['topic'] = $zoom_meeting_topic;
-			
+
 			$arr['start_date'] = $start_end_time;
 			$arr['duration'] = $duration;
 			$arr['password'] = ZOOM_LINK_PASSWORD;
-			
+
 			$arr['type'] = '2';
-			
+
 			$Meeting_Data = createMeeting($arr);
 			$meeting_url = $Meeting_Data->join_url;
 			$meeting_topic = $Meeting_Data->topic;
 			$meeting_id = $Meeting_Data->id;
 			$meeting_password = $Meeting_Data->password;
-			
+
 			$Save_Meet_Data_arr = array();
 			$Save_Meet_Data_arr['topic'] = $meeting_topic;
 			$Save_Meet_Data_arr['meeting_id'] = $meeting_id;
@@ -129,7 +129,7 @@
 			$Save_Meet_Data_arr['booking_id'] = $booking_id;
 			save_Meeting_Data($Save_Meet_Data_arr);
 			//Zoom links data insertion END*/
-			
+
 				$subject='Fully Bossed | Speaker Request - Now Confirmed';
 			    $body="<p style='margin: 0; padding: 0 0 6px 9px; font-family: Gotham;'>
 				Hi $name,</p>
@@ -137,25 +137,28 @@
 				Thank you very much for your payment to have Fully Bossed speak at your upcoming event. We can't wait for it.
 				</p>
 				<p style='margin: 0; padding: 0 0 6px 9px; font-family: Gotham;'>
+				Please do ensure we have the very latest details and logistics we need to attend your event. You can simply reply to this email if needed.
+				</p>
+				<p style='margin: 0; padding: 0 0 6px 9px; font-family: Gotham;'>
                 In the meantime, if you have any questions or want to share any further details with us. Please get in touch <a href='".home_url()."/contact'>here</a></p>";
-				
+
 				$body = getSpeakingBookingEmailHtml($subject,$booking_id,$body);
 				$headers = array('Content-Type: text/html; charset=UTF-8');
-                $headers[] = 'From: Fully Bossed <info@fullybossed.com>';				
+                $headers[] = 'From: Fully Bossed <info@fullybossed.com>';
 				$admin_email = ADMIN_EMAIL;
-				$headers[] = "Cc: $admin_email";	
+				$headers[] = "Cc: $admin_email";
 				wp_mail($email, $subject, $body, $headers);
 				$success_msg = 'Thanks for booking your appopintment with The Fully Bossed Succeed';
-				$url = home_url().'/speaking-booking-payment-details/?booking-id='.base64_encode($booking_id);		
+				$url = home_url().'/speaking-booking-payment-details/?booking-id='.base64_encode($booking_id);
 				echo '<script>
 				location.assign("'.$url.'");
 				</script>';
 				exit;
-				
+
 		}else{
-			
+
 			$error_msg='Your booking appopintment has been unsuccessfully';
-		}	
+		}
  }
 ?>
 <div class="content">
@@ -180,27 +183,27 @@
 				<div class="dark text-center">
 					<h2>Complete your Booking Payment</h2>
 				</div>
-				<?php 
-				if(!empty($success_msg)){					
+				<?php
+				if(!empty($success_msg)){
 					/*echo '<div class="alert alert-success text-center" role="alert">
 					'.$success_msg.'
 					</div>';*/
 					$url=home_url().'/booking-payment-details/?booking-id='.base64_encode($insert_id);
-				?>	
+				?>
 				<script>
 				   location.assign("<?php echo $url?>");
 				</script>
 				<?php
 				 }
 				?>
-				<?php 
+				<?php
 				if(!empty($error_msg)){
-					
+
 					echo '<div class="alert alert-danger text-center" role="alert">
 					'.$error_msg.'
 					</div>'
-				?>	
-				
+				?>
+
 				<?php
 				 }
 				?>
@@ -270,7 +273,7 @@
 				</div>
 				<div class="u-row text-center u-sitecolor-btn">
 					<!--<a href="/booking-overview"><button type="submit" class="back"><i class="fas fa-chevron-left"></i> Back</button></a>-->
-					
+
 				</div>
 			</div>
 		</div>
@@ -285,14 +288,14 @@
 
         if (iKeyCode != 46 && iKeyCode > 31 && (iKeyCode < 48 || iKeyCode > 57))
             return false;
-			
+
        return true;
-    } 
+    }
 </script>
 <script>
   jQuery(document).ready(function() {
     jQuery("#paymentFrm").submit(function() {
-		
+
 		jQuery("#loder-img").show();
         // Disable the submit button to prevent repeated clicks
         jQuery('#payBtn').attr("disabled", "disabled");

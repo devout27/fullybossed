@@ -128,12 +128,12 @@
 				$Save_Meet_Data_arr['booking_id'] = $booking_id;
 				save_Meeting_Data($Save_Meet_Data_arr);
 			}
-			
+
 			$subject = 'Fully Bossed | Coaching Confirmation';
 			$body = "<p style='margin: 0; padding: 0 0 6px 9px; font-family: Gotham;'>
-			Hello $name,</p>			
+			Hello $name,</p>
 			<p style='margin: 0; padding: 0 0 6px 9px; font-family: Gotham;'>
-			Thank you very much choosing us to work with you. We are hopeful that you will be very happy with your selection! Below are the Zoom joining instructions and booking recap. Just let us know if you have any questions at <a href='#'>info@fullybossed.com</a></p>";
+			Thank you very much for choosing us to work with you. We are hopeful that you will be very happy with your selection! Below are the Zoom joining instructions and booking recap. Just let us know if you have any questions at <a href='#'>info@fullybossed.com</a></p>";
 			$body = getCoachingBookingEmailHtml($subject,$booking_id,$body);
 			$headers = array('Content-Type: text/html; charset=UTF-8');
 			$headers[] = 'From: Fully Bossed <info@fullybossed.com>';
@@ -146,7 +146,7 @@
 			location.assign("'.$url.'");
 			</script>';
 			exit;
-			
+
 		}else{
 			$error_msg='Your booking appopintment has been unsuccessfully';
 		}

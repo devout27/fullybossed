@@ -45,7 +45,7 @@ get_header();
 
 			    $category_post_pillar=get_term_meta($term_id,'category_pillar',true);
 			    // print_r($category_post_pillar);
-				// if(in_array($pillar_id,$category_post_pillar)){
+				if(in_array($pillar_id,$category_post_pillar)){
 					$nocargory=false;
 		?>
 			<div class="listing-list" style="margin-top:40px; margin-bottom: 0px;">
@@ -57,8 +57,8 @@ get_header();
 				    	<div class="swiper-container blog-slide1">
 		   					<div class="swiper-wrapper">
 								<?php
-						// 1st query not empty
-                $args=array(
+						    //1st query not empty
+                            $args=array(
 									'posts_per_page'   => '-1',
 									'orderby'          => 'post_date',
 									// 'order'            => 'ASC',
@@ -80,7 +80,7 @@ get_header();
 								);
 								$posts=query_posts($args);
 
-					// 2nd query empty
+					           //2nd query empty
 								$args1=array(
 									'posts_per_page'   => '-1',
 									'orderby'          => 'post_date',
@@ -104,10 +104,11 @@ get_header();
 									),
 								);			
 								// print_r($args1);				
-								$posts1=query_posts($args1);
-                $noPost=true;
-            // 1st loop
-                foreach($posts1 as $post2){
+						 $posts1=query_posts($args1);
+                         $noPost=true;
+                         //1st loop
+                         foreach($posts1 as $post2){
+							 
 									$post_id2=$post2->ID;
 									$post_title2=$post2->post_title;
 									$post_content2=$post2->post_content;
@@ -123,7 +124,7 @@ get_header();
 									if(empty($image_url)){									
 										$image_url='https://fullybossed.com/wp-content/uploads/2021/04/insta-img.jpg';									
 									}
-									// if(in_array($pillar_id,$post_post_pillar)){
+								if(in_array($pillar_id,$post_post_pillar)){
 										$noPost=false;
 								?>
 		   						<div class="swiper-slide">
@@ -149,23 +150,14 @@ get_header();
 											</div>
 										</div>
                     <?php } ?>
-		                <!--<div class="social-icons">
-													<div>
-														<a target="_blank" href="#"><i class="fab fa-facebook-f"></i></a>
-														<a target="_blank" href="#"><i class="fab fa-instagram"></i></a>
-														<a target="_blank" href="#"><i class="fab fa-linkedin"></i></a>
-														<a target="_blank" href="#"><i class="fab fa-twitter"></i></a>
-														<a target="_blank" href="#"><i class="fab fa-whatsapp"></i></a>
-														<a target="_blank" href="#"><i class="fas fa-envelope"></i></a>
-													</div>
-												</div>-->
+		               
 		   							</div>
 		   						</div>
 								<?php
-								// }
+								  }
 								}
 
-					// 2nd loop
+					       //2nd loop
 								foreach($posts as $post){
 									$post_id=$post->ID;
 									$post_title=$post->post_title;
@@ -183,7 +175,7 @@ get_header();
 									if(empty($image_url)){										
 										$image_url='https://fullybossed.com/wp-content/uploads/2021/04/insta-img.jpg';		
 									}
-									// if(in_array($pillar_id,$post_post_pillar)){
+									if(in_array($pillar_id,$post_post_pillar)){
 										$noPost=false;
 								?>
 		   						<div class="swiper-slide">
@@ -205,21 +197,12 @@ get_header();
 												<img src="/wp-content/themes/fullybossed/images/decorated-yellow12.png">
 											</div>
 										</div>
-                    <?php } ?>
-		               	<!--<div class="social-icons">
-													<div>
-														<a target="_blank" href="#"><i class="fab fa-facebook-f"></i></a>
-														<a target="_blank" href="#"><i class="fab fa-instagram"></i></a>
-														<a target="_blank" href="#"><i class="fab fa-linkedin"></i></a>
-														<a target="_blank" href="#"><i class="fab fa-twitter"></i></a>
-														<a target="_blank" href="#"><i class="fab fa-whatsapp"></i></a>
-														<a target="_blank" href="#"><i class="fas fa-envelope"></i></a>
-													</div>
-												</div>-->
+                                      <?php } ?>
+		        
 		   							</div>
 		   						</div>
 								<?php
-								// }
+								    }
 								}
 								if($noPost) { ?>
 								    <div class="col-md-12">
@@ -234,7 +217,7 @@ get_header();
 			    </div>
 			</div>
 		<?php
-			//}
+			}
 		 } ?>
 		<?php
 		if($nocargory){

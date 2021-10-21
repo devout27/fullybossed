@@ -10,12 +10,8 @@ get_header();
 
 <?php
         $pillar=isset($_GET['pillar']) ? $_GET['pillar']:'';
-
 	    $plierData = get_page_by_path($pillar, OBJECT, 'pillar');
-	    // print_r($plierData);
 		$pillar_id=$plierData->ID;
-		print_r($pillar_id);
-		#pr($plierData,1);
 		if(empty($pillar_id)){
 			 $url=home_url()."/services/blogs-vlogs/";
 			 echo "<script>window.location.assign('".$url."');</script>";
@@ -23,9 +19,6 @@ get_header();
 		}
 
 		$categorys = get_categories(array('taxonomy' => 'category'));
-		#pr($categorys,1);
-		//$category_post_pillar=get_term_meta(20,'category_post_pillar',true);
-		//pr($category_post_pillar,1);
 		$nocargory=true;
 ?>
 <div class="content">
@@ -48,13 +41,9 @@ get_header();
 			  $name=$val->name;
 				$term_id=$val->term_id;
 				$slug=$val->slug;
-
 			  $category_post_pillar=get_term_meta($term_id,'category_post_pillar',true);
-				//echo $term_id.'<br>';
-				//pr($category_post_pillar).'<br>';
-
-				// if(in_array($pillar_id,$category_post_pillar))
-			 //    {
+			if(in_array($pillar_id,$category_post_pillar))
+			   {
 					$nocargory=false;
 		?>
 			<div class="listing-list" style="margin-top:40px; margin-bottom: 0px;">
@@ -87,7 +76,7 @@ get_header();
 									);
 									$posts = get_posts($args);
 					
-							// 2nd query empty		
+							     //2nd query empty		
 									$args1 = array(
 										'posts_per_page'   => '-1',
 										'orderby'					 => 'post_title',		
@@ -154,7 +143,7 @@ get_header();
 									</div>
                     <?php
 										 }
-										// }						
+															
 										?>
 		   							</div>
 		   						</div>
@@ -162,7 +151,7 @@ get_header();
 							       }
 								  }					
 
-					// 2nd foreach loop start
+					            //2nd foreach loop start
 								foreach($posts as $post){
 									$post_id=$post->ID;
 									$post_title=$post->post_title;
@@ -205,19 +194,8 @@ get_header();
 									</div>
                     <?php
 										 }
-										// }						
+														
 										?>									
-                  <!--<div class="social-icons">
-                     		<div>
-													<a target="_blank" href="#"><i class="fab fa-facebook-f"></i></a>
-													<a target="_blank" href="#"><i class="fab fa-instagram"></i></a>
-													<a target="_blank" href="#"><i class="fab fa-linkedin"></i></a>
-													<a target="_blank" href="#"><i class="fab fa-twitter"></i></a>
-													<a target="_blank" href="#"><i class="fab fa-whatsapp"></i></a>
-													<a target="_blank" href="#"><i class="fas fa-envelope"></i></a>
-                    		</div>
-                 			</div>-->
-		          
 		   							</div>
 		   						</div>
 							   <?php
@@ -236,7 +214,7 @@ get_header();
 			    </div>
 			</div>
 		<?php
-			//}
+			}
 		} ?>
 		<?php
 		if($nocargory){

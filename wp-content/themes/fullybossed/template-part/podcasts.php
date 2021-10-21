@@ -42,9 +42,8 @@ get_header();
 			   $name=$val->name;
 				$term_id=$val->term_id;
 				$slug=$val->slug;
-
 			    $category_post_pillar=get_term_meta($term_id,'category_podcasts_pillar',true);
-				// if(in_array($pillar_id,$category_post_pillar))
+				if(in_array($pillar_id,$category_post_pillar))
 			    {
 					$nocargory=false;
 		?>
@@ -59,7 +58,7 @@ get_header();
 
 								<?php
 						// 1st query not empty
-                $args=array(
+                           $args=array(
 									'posts_per_page'   => '-1',
 									'orderby'          => 'post_title',
 									// 'order'            => 'ASC',
@@ -102,10 +101,10 @@ get_header();
 										)
 									),
 								);
-							$Posts1 = query_posts($args1);
-            	$noPost=true;
+							 $Posts1 = query_posts($args1);
+            	             $noPost=true;
 
-            // 1st loop
+                              //1st loop
 								foreach($Posts1 as $post1){
 									$post_id1=$post1->ID;
 									$post_title1=$post1->post_title;
@@ -148,23 +147,14 @@ get_header();
 											</div>
 										</div>
                    <?php } ?>
-												<!--<div class="social-icons">
-													<div>
-														<a target="_blank" href="#"><i class="fab fa-facebook-f"></i></a>
-														<a target="_blank" href="#"><i class="fab fa-instagram"></i></a>
-														<a target="_blank" href="#"><i class="fab fa-linkedin"></i></a>
-														<a target="_blank" href="#"><i class="fab fa-twitter"></i></a>
-														<a target="_blank" href="#"><i class="fab fa-whatsapp"></i></a>
-														<a target="_blank" href="#"><i class="fas fa-envelope"></i></a>
-													</div>
-												</div>-->
+												
 		   							</div>
 		   						</div>
 								<?php
 								   }
 								}
 
-            // 1st loop									
+                               //1st loop									
 								foreach($posts as $post){
 									$post_id=$post->ID;
 									$post_title=$post->post_title;
@@ -204,16 +194,7 @@ get_header();
 											</div>
 										</div>
                     <?php } ?>
-		                   <!--<div class="social-icons">
-                       				<div>
-                              	<a target="_blank" href="#"><i class="fab fa-facebook-f"></i></a>
-                              	<a target="_blank" href="#"><i class="fab fa-instagram"></i></a>
-                              	<a target="_blank" href="#"><i class="fab fa-linkedin"></i></a>
-                          			<a target="_blank" href="#"><i class="fab fa-twitter"></i></a>
-                          			<a target="_blank" href="#"><i class="fab fa-whatsapp"></i></a>
-				   											<a target="_blank" href="#"><i class="fas fa-envelope"></i></a>
-                      				</div>
-		       					     		</div>-->
+		                  
 		   							</div>
 		   						</div>
 								<?php
