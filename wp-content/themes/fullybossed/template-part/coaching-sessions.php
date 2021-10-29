@@ -260,6 +260,9 @@
 												<label># of Sessions:</label>
 												<select name="number_of_sessions" required class="bc_number_of_sessions">
 													<option value="1">1</option>
+													<option value="2">2</option>
+													<option value="3">3</option>
+													<option value="4">4</option>
 													<option value="5">5</option>
 													<option value="10">10</option>
 													<option value="15">15</option>
@@ -267,8 +270,10 @@
 												</select>
 											</div>
 										</div>
+										
 									 <?php
 									 }?>
+									 
 									 <?php
 									 if(in_array($session['service_id'],array(221))){
 	                                 ?>

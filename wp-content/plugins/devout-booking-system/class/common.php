@@ -3,7 +3,7 @@ define('CURRENCYSYMBOL', '£');
 define('CURRENCY', 'USD');
 define('STRIPE_PUBLIC_KEY', 'pk_test_n7sq3wA0sNS5ZmsG15sed66m005biWueYq');
 define('STRIPE_SECRET_KEY', 'sk_test_QazpuitBbcSz7wL89nFnmQi200cK6J8azj');
-define('HST_PERCENT', '13');
+define('HST_PERCENT', '20');
 
 define('FULLY_BOSSED_ACADEMY_SERVICE_ID', '195');
 define('COACHING_SESSION_ID', '2');
@@ -95,7 +95,7 @@ function save($table, $data)
 }
 
 function dateFormate($date, $time=true){
-	
+
     $newDate = '';
     if ($date != '' && $date != '0000-00-00 00:00:00' && $date != '0000-00-00')
     {
@@ -109,7 +109,7 @@ function dateFormate($date, $time=true){
         }
     }
 	return  $newDate;
- 
+
 }
 
 function dateFormateNew($date){
@@ -118,8 +118,8 @@ function dateFormateNew($date){
         {
             $newDate = date('F d Y', strtotime($date));
         }
-	return $newDate;	
-} 
+	return $newDate;
+}
 function ftimeFormate($time)
 {
     $timeNew = '';

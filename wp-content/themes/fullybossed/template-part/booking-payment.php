@@ -78,7 +78,7 @@ if(empty($booking_id)){
 				Thank you very much for choosing us to work with you. We are hopeful that you will be very happy with your selection! The Zoom joining instructions and academy materials will be emailed to you around 1 week before the session starts – please keep a look out for another email from us.
 				</p>
 				<p style='margin: 0; padding: 0 0 6px 9px; font-family: Gotham;'>
-                In the meantime if you have any questions please reach us at <a href='mailto:info@fullybossed.com'>info@fullybossed.com</a></p>
+                   In the meantime if you have any questions please reach us at <a href='mailto:info@fullybossed.com'>info@fullybossed.com</a></p>
 				<h5 style='font-size: 18.0px; line-height: 25.0px; display: block; margin: 0.0px 0.0px 15.0px 0.0px; padding: 15.0px 0.0px 0.0px 0.0px; color: rgb(51,51,51); text-transform: uppercase; letter-spacing: 1.0px; font-family: GoudyOS; color: #000;'>Whilst we’re on the topic…</h5>
 				<p style='margin: 0; padding: 0 0 6px 9px; font-family: Gotham;'> Our Fully Bossed Academy will be refreshed each quarter, bringing you the latest thinking, tips, considerations and guest speakers! Sometimes we’ll also go very deep on a particular topical theme so <span style='text-decoration: underline;'>look out for more from us</span>. We recommended refreshing your knowledge and learning in the group setting every 6-8 months.</p>
 				";

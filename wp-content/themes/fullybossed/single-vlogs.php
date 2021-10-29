@@ -20,12 +20,12 @@ $post_3rd_party=isset($post_3rd_party[0]) ? $post_3rd_party[0]:'';
 $video_url_id=get_post_meta($post_id,'video_url',true);
 $video_url=wp_get_attachment_url($video_url_id);
 if(empty($image_url)){
-	
+
 	$image_url='https://fullybossed.com/wp-content/uploads/2021/04/insta-img.jpg';
 }
 
 if(empty($external_link)){
-	
+
 	$external_link=$permalink;
 }
 $post_post_pillar=get_post_meta($post_id,'category_post_pillar',true);
@@ -44,8 +44,9 @@ $post_post_pillar=get_post_meta($post_id,'category_post_pillar',true);
    </div>
    <div class="container">
    <div class="row single-ping">
-       <div class="single-p-img">
-	   <img src="<?php echo $image_url?>"></div>
+       <!--<div class="single-p-img">
+	   <img src="<?php echo $image_url?>"></div>-->
+
 	    <?php if(!empty($video_url)){?>
 		<div class="col-sm-12">
 		 <video width="100%" height="100%" controls autoplay>
@@ -53,9 +54,9 @@ $post_post_pillar=get_post_meta($post_id,'category_post_pillar',true);
 		  <source src="<?php echo $video_url?>" type="video/ogg">
 		  <source src="<?php echo $video_url?>" type="video/webm">
 		  Your browser does not support the video tag.
-		</video> 
+		</video>
 		</div>
-		<?php 
+		<?php
 		}?>
 	    <div class="col-sm-12">
 		   <!--<p><?php echo $post_content ?></p>-->
