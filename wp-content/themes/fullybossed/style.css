@@ -2268,6 +2268,22 @@ h2 mark {
 	width: 68%;
 	height: 100%;
 }
+.c-single-tags ul {
+	display: inline-flex;
+	margin: 0;
+}
+.c-single-tags ul li {
+	list-style: none;
+	padding: 5px 10px;
+	border: 1px solid #a8d08d;
+	margin: 0 10px;
+	background: #a8d08d;
+	color: #000;
+}
+.c-single-tags ul li p {
+	margin: 0;
+	color#000
+}
 
 
 

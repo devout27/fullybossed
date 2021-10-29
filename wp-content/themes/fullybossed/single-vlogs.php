@@ -58,6 +58,11 @@ $post_post_pillar=get_post_meta($post_id,'category_post_pillar',true);
 		</div>
 		<?php
 		}?>
+		<div class="col-sm-12">
+			<div class="custome-vlog-video mt-5">
+				<iframe width="100%" height="800px" src="https://www.youtube.com/embed/33Jk3_a0Eqc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			</div>
+		</div>
 	    <div class="col-sm-12">
 		   <!--<p><?php echo $post_content ?></p>-->
 		   <?php

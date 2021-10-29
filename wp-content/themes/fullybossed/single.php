@@ -46,6 +46,24 @@ if(empty($image_url)){
    <div class="container">
    <div class="row single-ping">
        <div class="single-p-img"><img src="<?php echo $image_url?>"></div>
+	   <div class="col-sm-12 text-center">
+			<div class="c-single-tags">
+				<ul>
+					<li>
+						<p>Lorem Ipsum</p>
+					</li>
+					<li>
+						<p>Lorem Ipsum</p>
+					</li>
+					<li>
+						<p>Lorem Ipsum</p>
+					</li>
+					<li>
+						<p>Lorem Ipsum</p>
+					</li>
+				</ul>
+			</div>
+		</div>
 	    <div class="col-sm-12">
 		   <p><?php //echo $post_content ?></p>
 			<?php
