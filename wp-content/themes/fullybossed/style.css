@@ -2284,7 +2284,9 @@ h2 mark {
 	margin: 0;
 	color#000
 }
-
+.elementor-element-4ba9295 > .elementor-container {
+	max-width: 1210px !important;
+}
 
 
 /* Responsive */

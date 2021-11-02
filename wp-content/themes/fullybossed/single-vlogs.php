@@ -19,6 +19,7 @@ $post_3rd_party=get_post_meta($post_id,'post_3rd_party',true);
 $post_3rd_party=isset($post_3rd_party[0]) ? $post_3rd_party[0]:'';
 $video_url_id=get_post_meta($post_id,'video_url',true);
 $video_url=wp_get_attachment_url($video_url_id);
+$video_external_url=get_post_meta($post_id,'video_external_url',true);
 if(empty($image_url)){
 
 	$image_url='https://fullybossed.com/wp-content/uploads/2021/04/insta-img.jpg';
@@ -58,13 +59,16 @@ $post_post_pillar=get_post_meta($post_id,'category_post_pillar',true);
 		</div>
 		<?php
 		}?>
-		<div class="col-sm-12">
-			<div class="custome-vlog-video mt-5">
-				<iframe width="100%" height="800px" src="https://www.youtube.com/embed/33Jk3_a0Eqc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		<?php if(!empty($video_external_url)){ ?>
+			<div class="col-sm-12">
+				<div class="custome-vlog-video mt-5">
+					<iframe width="100%" height="800px" webkitallowfullscreen mozallowfullscreen allowfullscreen src="<?php echo $video_external_url?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				</div>
 			</div>
-		</div>
+
+		<?php
+		}?>
 	    <div class="col-sm-12">
-		   <!--<p><?php echo $post_content ?></p>-->
 		   <?php
 			if ( have_posts() ) :
 			while ( have_posts() ) : the_post();

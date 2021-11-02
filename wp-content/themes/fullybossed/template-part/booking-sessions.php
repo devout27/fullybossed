@@ -30,13 +30,12 @@
 		<div class="container">
 			<div class="dark up-h-booking text-center">
 				<h2><mark>Fully Bossed –The Academy</mark></h2>
-				<h4>Get ready to be transformed in our 3-day workshop</h4>
+				<h4>Get ready to be transformed</h4>
 			</div>
 			<div class="dark bown-p-booking text-center">
 				<!-- <h4>This Academy is aimed at:</h4> -->
 				<p>Utilising our Fully Bossed Blueprint, our Academy aims to help you get vital tips, tools and
-					insights to help you advance in your career by focusing on our 4 core topics. We'll bring this to
-					you over a 3 day period.</p>
+					insights to help you advance in your career by focusing on our 4 core topics. We'll bring you this over a 3 part agenda.</p>
 				<!-- <p>- Start-ups looking to effectively launch their business or advance it</p> -->
 			</div>
 			<br>
@@ -126,7 +125,7 @@
 								<div class="col-md-3 tablet text-right">
 									<div class="u-sitecolor-btn text-right">
 										<?php if($regular_price > $price){?>
-										<span style="text-decoration: line-through !important; color: #ff0000;"><b><?php echo CURRENCYSYMBOL.number_format($regular_price,2);?></b></span>
+										<span style="text-decoration: line-through !important; color: #ffd966;"><b><?php echo CURRENCYSYMBOL.number_format($regular_price,2);?></b></span>
 										<?php
 										}?>
 										<span><?php echo CURRENCYSYMBOL.number_format($price,2);?></span>

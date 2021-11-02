@@ -8,7 +8,6 @@
  * @subpackage Twenty_Nineteen
  * @since Twenty Nineteen 1.0
  */
-
 get_header();
 global $post;
 $post_id=$post->ID;
@@ -29,7 +28,7 @@ $post_post_pillar=get_post_meta($post_id,'category_post_pillar',true);
 if(empty($image_url)){
 	$image_url='https://fullybossed.com/wp-content/uploads/2021/04/insta-img.jpg';
 }
-
+$tags=wp_get_post_tags($post_id);
 ?>
 <div class="content">
 	<div class="page-inner-title u-spacing ubg-grey">
@@ -47,22 +46,20 @@ if(empty($image_url)){
    <div class="row single-ping">
        <div class="single-p-img"><img src="<?php echo $image_url?>"></div>
 	   <div class="col-sm-12 text-center">
+	        <?php if(!empty($tags)){?> 
 			<div class="c-single-tags">
 				<ul>
+				<?php foreach($tags as $tag){?>
 					<li>
-						<p>Lorem Ipsum</p>
+						<p><?php echo $tag->name;?></p>
 					</li>
-					<li>
-						<p>Lorem Ipsum</p>
-					</li>
-					<li>
-						<p>Lorem Ipsum</p>
-					</li>
-					<li>
-						<p>Lorem Ipsum</p>
-					</li>
+				<?php 
+				}?>
+					
 				</ul>
 			</div>
+			<?php 
+			}?>
 		</div>
 	    <div class="col-sm-12">
 		   <p><?php //echo $post_content ?></p>
